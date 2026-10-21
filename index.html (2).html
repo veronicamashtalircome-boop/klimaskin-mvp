@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KlimaSkin — Interactive MVP</title>
+<style>
+:root{
+  --bg:#f4efe8;--paper:#fbf8f3;--card:#fff;--ink:#172535;--muted:#6a7684;
+  --navy:#113a5a;--blue:#2f7fb4;--blue2:#86b9d8;--orange:#dc7c37;
+  --green:#2f8a62;--warn:#c98b24;--red:#bb4e4e;--line:#ddd4c8;
+  --shadow:0 16px 40px rgba(39,31,25,.09);--r:22px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#f8f4ee,#f1ebe2);color:var(--ink)}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.container{max-width:1280px;margin:auto;padding:0 24px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(214,202,188,.7)}
+.navin{max-width:1280px;margin:auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.brand{font-size:25px;font-weight:850;letter-spacing:-.04em}.brand span{color:var(--blue)}
+.links{display:flex;gap:22px;font-size:14px;color:#455367}.links a:hover{color:var(--navy)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.cart-pill{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:12px}
+.cart-count{display:grid;place-items:center;width:22px;height:22px;background:var(--orange);color:#fff;border-radius:999px;font-size:12px;font-weight:800}
+.btn{border:none;border-radius:13px;padding:12px 16px;font-weight:800;transition:.2s}
+.btn:hover{transform:translateY(-1px)}
+.primary{background:var(--navy);color:#fff}.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.section{padding:42px 0}
+.panel{background:rgba(255,255,255,.8);border:1px solid rgba(217,204,189,.9);border-radius:28px;box-shadow:var(--shadow);padding:26px}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.13em;color:var(--orange);font-weight:900}
+h1{font-size:58px;line-height:.98;letter-spacing:-.055em;margin:12px 0 18px}
+h2{font-size:36px;line-height:1.05;letter-spacing:-.04em;margin:0 0 14px}
+h3{letter-spacing:-.025em;margin:0 0 10px}
+p{line-height:1.55}
+.muted{color:var(--muted)}.small{font-size:12px;color:var(--muted)}
+.hero{display:grid;grid-template-columns:1.02fr .98fr;gap:24px;align-items:stretch;padding-top:24px}
+.hero-copy{display:flex;flex-direction:column;justify-content:space-between;min-height:560px}
+.hero-copy .lead{font-size:18px;color:#465467;max-width:590px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.benefit{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center;font-size:13px}
+.benefit b{display:block;margin-top:7px}
+.hero-visual{min-height:560px;display:flex;flex-direction:column;gap:14px}
+.room-scene{position:relative;flex:1;border-radius:24px;overflow:hidden;background:
+linear-gradient(180deg,#efe2d2 0 68%,#c7a486 68% 100%)}
+.room-scene:before{content:"";position:absolute;left:0;right:0;bottom:0;height:36%;background:linear-gradient(180deg,#b88963,#8e674d)}
+.wall-line{position:absolute;inset:0;background:
+linear-gradient(90deg,transparent 0 7%,rgba(255,255,255,.18) 7% 7.5%,transparent 7.5% 92%,rgba(255,255,255,.18) 92% 92.5%,transparent 92.5%)}
+.real-window{position:absolute;left:8%;right:8%;top:7%;height:76%;border:14px solid #e7e1d9;border-radius:16px;background:linear-gradient(180deg,#78b9e5 0 60%,#e3bf8c 60% 63%,#cda16f 63% 100%);box-shadow:inset 0 0 0 1px #c9b8a9,0 8px 22px rgba(0,0,0,.14);overflow:hidden}
+.real-window .frame-v{position:absolute;top:0;bottom:0;left:50%;width:10px;transform:translateX(-50%);background:#e8e2dc}
+.real-window .film-left,.real-window .film-right{position:absolute;top:0;bottom:0;width:50%;transition:.35s ease}
+.real-window .film-left{left:0;background:rgba(233,129,66,.14)}
+.real-window .film-right{right:0;background:rgba(26,75,107,.18)}
+.cityscape{position:absolute;left:0;right:0;bottom:0;height:40%;background:
+linear-gradient(90deg,#c88f58 0 10%,#e0b17d 10% 20%,#b47b49 20% 30%,#d39a61 30% 42%,#e2b880 42% 56%,#bf854f 56% 70%,#d8a86f 70% 85%,#bd7c45 85% 100%);
+clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,60% 53%,68% 30%,74% 57%,82% 42%,90% 64%,100% 48%,100% 100%,0 100%)}
+.church{position:absolute;left:49%;bottom:31%;width:22px;height:118px;background:#e8e3dc;border-radius:8px 8px 0 0;transform:translateX(-50%)}
+.church:before{content:"";position:absolute;top:-30px;left:50%;transform:translateX(-50%);border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:32px solid #5b6d7d}
+.temp{position:absolute;top:14px;background:rgba(255,255,255,.94);border:1px solid #ddd;border-radius:999px;padding:8px 11px;font-weight:800;font-size:13px;box-shadow:0 5px 16px rgba(0,0,0,.08)}
+.temp.out{left:14px}.temp.in{right:14px}
+.split-labels{display:flex;justify-content:space-between;gap:10px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px 14px;font-size:13px}
+
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#e8f0f6;color:var(--navy);font-weight:900;margin-bottom:8px}
+.mode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.mode-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;cursor:pointer}
+.mode-card.active{outline:3px solid rgba(47,127,180,.18);border-color:#9cc2dc}
+.miniw{height:115px;border:8px solid #e6dfd8;border-radius:11px;background:linear-gradient(#7eb8df 0 62%,#d0a16c 62%);position:relative;overflow:hidden}
+.mini-tint{position:absolute;inset:0;transition:.25s}
+.mode-card p{font-size:12px;color:#5d6978;margin:8px 0 0}
+
+.product-demo{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.device{height:300px;background:linear-gradient(180deg,#eef6fb,#dbeaf4);border:1px solid #cddce6;border-radius:20px;position:relative;overflow:hidden}
+.smartfilm{position:absolute;left:26px;right:26px;bottom:30px;height:140px;border:1px solid rgba(31,77,109,.22);background:rgba(66,127,168,.18);border-radius:12px}
+.solar{position:absolute;left:32px;top:38px;width:45%;height:28px;border-radius:7px;background:repeating-linear-gradient(90deg,#274d6c 0 9px,#4d86ad 9px 17px)}
+.node{position:absolute;right:30px;top:25px;width:145px;height:62px;border-radius:13px;background:#e7e2dc;border:1px solid #d5cbc0}
+.edge{position:absolute;right:42px;top:106px;width:17px;height:64px;border-radius:10px;background:#aebfcd}
+.label{position:absolute;background:#fff;border:1px solid var(--line);border-radius:11px;padding:8px 10px;font-size:12px;box-shadow:0 8px 18px rgba(0,0,0,.06)}
+.l-film{left:34px;bottom:44px}.l-node{right:22px;bottom:38px}.l-solar{left:32px;top:78px}.l-edge{right:22px;top:108px}
+.checklist{display:grid;gap:10px}.check{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}.check b{display:block}
+
+.config-shell{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.progress{display:flex;align-items:center;gap:8px;margin-bottom:18px}.dot{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#dfe7ee;color:var(--navy);font-weight:900}.dot.active{background:var(--navy);color:#fff}.grow{height:4px;background:#e6ddd4;flex:1;border-radius:99px}
+.group-title{font-size:13px;font-weight:850;color:#425064;margin:18px 0 8px}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.choice{border:1px solid var(--line);background:#fff;color:#425064;padding:10px 12px;border-radius:12px;font-weight:750;cursor:pointer}
+.choice.active{background:#eaf2f7;border-color:#9fc0d8;color:#103a5a;box-shadow:inset 0 0 0 1px #b5d0e1}
+.field{display:grid;gap:7px;margin-top:12px}.field label{font-size:13px;font-weight:800;color:#425064}
+.field input,.field select{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 12px;color:#243243}
+.upload{border:2px dashed #bdc8d2;background:#fbfdff;border-radius:16px;min-height:165px;display:grid;place-items:center;text-align:center;color:#627183;padding:14px;cursor:pointer;overflow:hidden}
+.upload img{max-width:100%;max-height:220px;border-radius:12px}
+.input2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check-pills{display:flex;gap:8px;flex-wrap:wrap}
+.check-choice{border:1px solid var(--line);background:#fff;padding:9px 11px;border-radius:12px;font-size:13px;font-weight:700;color:#4b596b;cursor:pointer}
+.check-choice.active{background:#fff5e9;border-color:#e4b879;color:#8a561f}
+.navrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+.result-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+.result-card{border-radius:20px;padding:20px}.status-ok{background:linear-gradient(180deg,#eff9f3,#fff);border:1px solid #cce6d6}.status-warn{background:linear-gradient(180deg,#fff8ea,#fff);border:1px solid #efd5a4}.status-bad{background:linear-gradient(180deg,#fff0f0,#fff);border:1px solid #e8c1c1}
+.statusline{display:flex;align-items:center;gap:9px;font-weight:900}
+.product-name{font-size:30px;font-weight:900;margin:10px 0}.price{font-size:34px;font-weight:900;margin:10px 0}
+.why-list{display:grid;gap:9px}.why{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px;font-size:13px}.why b{display:block;margin-bottom:3px}
+.cart-box{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
+.sim-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+.slider{margin:16px 0}.slider-top{display:flex;justify-content:space-between;font-size:13px;font-weight:800}.slider input{width:100%;accent-color:var(--navy)}
+.sim-real{height:420px;border-radius:22px;position:relative;overflow:hidden;background:linear-gradient(180deg,#ecdfcf 0 67%,#b78460 67%);border:1px solid var(--line)}
+.sim-window{position:absolute;left:7%;right:7%;top:6%;bottom:10%;border:14px solid #e6e0d9;border-radius:15px;background:linear-gradient(180deg,#76b8e4 0 61%,#d3a26c 61%);overflow:hidden}
+.sim-window .cityscape{height:43%}.sim-window .church{bottom:32%}
+.sim-shade{position:absolute;inset:0;background:rgba(25,76,110,.17);transition:.25s}
+.modebadge{position:absolute;right:14px;top:14px;background:rgba(17,58,90,.92);color:#fff;padding:9px 12px;border-radius:999px;font-size:12px;font-weight:900}
+.sim-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.metric{background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px;font-size:12px}.metric b{display:block;font-size:16px;margin-top:3px}
+.explain{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px}
+
+.install-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.install-step{background:#fff;border:1px solid var(--line);border-radius:17px;padding:10px;cursor:pointer;transition:.2s}.install-step:hover{transform:translateY(-2px)}
+.install-step.active{border-color:#9fc0d8;box-shadow:0 0 0 3px rgba(47,127,180,.12)}
+.install-pic{height:110px;border-radius:12px;background:linear-gradient(135deg,#e5ddd5,#f9f5f0);position:relative;overflow:hidden}
+.install-pic:before{content:"";position:absolute;left:14px;top:18px;width:92px;height:68px;background:#fff;border-radius:10px;box-shadow:0 7px 18px rgba(0,0,0,.08)}
+.install-pic:after{content:"";position:absolute;right:16px;bottom:16px;width:70px;height:14px;border-radius:10px;background:#9cb4c6}
+.install-detail{margin-top:14px;background:#eef4f8;border:1px solid #c9dae6;border-radius:14px;padding:13px}
+.dashboard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kpi{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px}.kpi strong{display:block;font-size:24px;margin-top:5px}
+.rooms{display:grid;gap:8px;margin-top:12px}.room{display:grid;grid-template-columns:1.2fr .5fr .6fr;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px;cursor:pointer}.room:hover{background:#fbfdff}
+.room-status{font-size:12px;color:#547087}
+.footer{padding:28px 0 46px;color:#6b7787;border-top:1px solid rgba(214,202,188,.7);margin-top:30px}
+.footer strong{color:#384759}
+
+.modal{position:fixed;inset:0;background:rgba(12,22,30,.52);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}
+.modalbox{width:min(560px,95vw);background:#fff;border-radius:22px;padding:22px;box-shadow:0 26px 80px rgba(0,0,0,.22)}
+.modalhead{display:flex;justify-content:space-between;align-items:center}.x{border:none;background:#f0f2f4;border-radius:10px;width:34px;height:34px}
+.toast{position:fixed;right:20px;bottom:20px;background:#113a5a;color:#fff;padding:13px 16px;border-radius:12px;box-shadow:var(--shadow);display:none;z-index:120}.toast.show{display:block}
+
+@media(max-width:1050px){.hero,.product-demo,.config-shell,.result-layout,.sim-grid{grid-template-columns:1fr}.cards3{grid-template-columns:1fr}.hero-copy,.hero-visual{min-height:auto}}
+@media(max-width:760px){.links{display:none}.benefits,.steps4,.mode-grid,.install-grid,.dashboard-grid,.sim-metrics{grid-template-columns:1fr 1fr}.input2{grid-template-columns:1fr}.nav-actions .secondary{display:none}h1{font-size:44px}}
+@media(max-width:520px){.benefits,.steps4,.mode-grid,.install-grid,.dashboard-grid,.sim-metrics{grid-template-columns:1fr}.container{padding:0 15px}.navin{padding:12px 15px}.cart-pill{display:none}h1{font-size:38px}}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="navin">
+    <a href="#home" class="brand">Klima<span>Skin</span></a>
+    <div class="links">
+      <a href="#product">Produkt</a><a href="#how">So funktioniert’s</a><a href="#config">Konfigurator</a><a href="#simulator">Simulator</a><a href="#installation">Installation</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn secondary" id="safetyBtn">KlimaSkin 2.0</button>
+      <button class="cart-pill" id="cartBtn">🛒 Warenkorb <span class="cart-count" id="cartCount">0</span></button>
+      <a class="btn primary" href="#config">Jetzt konfigurieren</a>
+    </div>
+  </div>
+</div>
+
+<main>
+<section class="section" id="home">
+  <div class="container hero">
+    <div class="panel hero-copy">
+      <div>
+        <div class="eyebrow">KlimaSkin 2035 · Interactive MVP</div>
+        <h1>Coolere Räume.<br>Helle Tage.</h1>
+        <p class="lead">KlimaSkin ist ein selbstinstallierbares Retrofit-System für bestehende Fenster. Es reduziert unnötigen solaren Wärmeeintrag automatisch – ohne Klimaanlage, Fenstertausch oder großen Umbau.</p>
+        <div class="cta"><a href="#config" class="btn primary">Mein Fenster konfigurieren →</a><a href="#how" class="btn secondary">So funktioniert’s</a></div>
+      </div>
+      <div class="benefits">
+        <div class="benefit">☀️<b>Weniger Wärmeeintrag</b></div>
+        <div class="benefit">🌤️<b>Tageslicht bleibt</b></div>
+        <div class="benefit">🧰<b>Kein großer Umbau</b></div>
+        <div class="benefit">🪟<b>Für bestehende Fenster</b></div>
+      </div>
+    </div>
+    <div class="panel hero-visual">
+      <div class="room-scene">
+        <div class="wall-line"></div>
+        <div class="real-window">
+          <div class="cityscape"></div><div class="church"></div><div class="frame-v"></div>
+          <div class="film-left"></div><div class="film-right"></div>
+          <div class="temp out">Außen 32°C</div><div class="temp in">Innen 24°C</div>
+        </div>
+      </div>
+      <div class="split-labels"><span><b>Ohne KlimaSkin</b> · mehr Solarwärme</span><span><b>Mit KlimaSkin</b> · adaptiver Hitzeschutz</span></div>
+      <div class="small">Illustrative Konzeptdarstellung. Keine garantierte Temperaturreduktion.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="product">
+  <div class="container cards3">
+    <div class="panel">
+      <div class="eyebrow">Produktübersicht</div>
+      <h2>Ein System für bestehende Fenster.</h2>
+      <div class="product-demo">
+        <div class="device">
+          <div class="solar"></div><div class="smartfilm"></div><div class="node"></div><div class="edge"></div>
+          <div class="label l-film"><b>KlimaSkin Film</b><br>aktive Smart-Film-Schicht</div>
+          <div class="label l-solar"><b>Solar-Modul</b><br>versorgt den Window Node</div>
+          <div class="label l-edge"><b>Edge Connector</b></div>
+          <div class="label l-node"><b>Window Node</b><br>Sensorik & Steuerung</div>
+        </div>
+        <div class="checklist">
+          <div class="check"><b>KlimaSkin Film</b><span class="small">ändert Licht- und Wärmedurchlässigkeit.</span></div>
+          <div class="check"><b>Window Node</b><span class="small">misst direkt am Fenster und steuert die Folie.</span></div>
+          <div class="check"><b>KlimaHub</b><span class="small">liefert zusätzlichen Raumklima-Kontext.</span></div>
+          <div class="check"><b>Edge Connector</b><span class="small">verbindet Film und Window Node.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="how">
+      <div class="eyebrow">So funktioniert’s</div>
+      <h2>Messen. Entscheiden. Anpassen.</h2>
+      <div class="steps4">
+        <div class="step"><div class="n">1</div><b>Messen</b><div class="small">Sonne, Glas- und Raumtemperatur.</div></div>
+        <div class="step"><div class="n">2</div><b>Entscheiden</b><div class="small">Ist zusätzlicher Hitzeschutz nötig?</div></div>
+        <div class="step"><div class="n">3</div><b>Anpassen</b><div class="small">Film wechselt automatisch den Modus.</div></div>
+        <div class="step"><div class="n">4</div><b>Komfort</b><div class="small">Weniger Solarwärme, ohne dauerhafte Verdunkelung.</div></div>
+      </div>
+      <div class="mode-grid" id="modeCards">
+        <div class="mode-card active" data-alpha=".02" data-name="Clear Mode"><div class="miniw"><div class="mini-tint" style="background:rgba(25,76,110,.02)"></div></div><p><b>Clear Mode</b><br>hell und transparent</p></div>
+        <div class="mode-card" data-alpha=".15" data-name="Heat Protection"><div class="miniw"><div class="mini-tint" style="background:rgba(25,76,110,.15)"></div></div><p><b>Heat Protection</b><br>reduzierter Wärmeeintrag</p></div>
+        <div class="mode-card" data-alpha=".32" data-name="Maximum Protection"><div class="miniw"><div class="mini-tint" style="background:rgba(25,76,110,.32)"></div></div><p><b>Maximum Protection</b><br>stärkerer Schutz</p></div>
+        <div class="mode-card" data-alpha=".01" data-name="Winter / Clear"><div class="miniw"><div class="mini-tint" style="background:rgba(25,76,110,.01)"></div></div><p><b>Winter / Clear</b><br>Sonnenwärme nutzen</p></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="eyebrow">Warum Retrofit?</div>
+      <h2>Bestehende Gebäude statt Komplettumbau.</h2>
+      <p class="muted">KlimaSkin richtet sich besonders an Mieter:innen, Studierende, Wohnheime und ältere Gebäude, bei denen große bauliche Veränderungen schwierig oder teuer sind.</p>
+      <button class="btn secondary" id="whyNowBtn">Warum jetzt?</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="config">
+  <div class="container config-shell">
+    <div class="panel">
+      <div class="eyebrow">AI Configurator · Schritt 1</div>
+      <h2>Dein Zuhause</h2>
+      <div class="progress"><div class="dot active">1</div><div class="grow"></div><div class="dot">2</div><div class="grow"></div><div class="dot">3</div></div>
+
+      <div class="group-title">Welche Gebäudeart?</div>
+      <div class="pills" id="buildingChoices">
+        <button class="choice active" data-value="Wohnung">Wohnung</button>
+        <button class="choice" data-value="Haus">Haus</button>
+        <button class="choice" data-value="Studentenwohnheim">Studentenwohnheim</button>
+        <button class="choice" data-value="Sonstiges">Sonstiges</button>
+      </div>
+
+      <div class="group-title">Miete oder Eigentum?</div>
+      <div class="pills" id="ownerChoices">
+        <button class="choice active" data-value="Miete">Ich miete</button>
+        <button class="choice" data-value="Eigentum">Eigentum</button>
+      </div>
+
+      <div class="field">
+        <label>Wo befindet sich dein Zuhause?</label>
+        <input id="locationInput" value="Krems, Österreich" placeholder="z. B. Krems, Österreich">
+      </div>
+
+      <div class="navrow"><span></span><button class="btn primary" id="toWindow">Weiter: Fenster →</button></div>
+    </div>
+
+    <div class="panel" id="windowStep">
+      <div class="eyebrow">AI Configurator · Schritt 2</div>
+      <h2>Dein Fenster</h2>
+      <div class="progress"><div class="dot">1</div><div class="grow"></div><div class="dot active">2</div><div class="grow"></div><div class="dot">3</div></div>
+
+      <label class="upload" for="photoInput" id="uploadBox">＋ Foto deines Fensters hochladen<br><span class="small">(optional · lokal, nichts wird versendet)</span></label>
+      <input type="file" id="photoInput" accept="image/*" hidden>
+
+      <div class="group-title">Ausrichtung</div>
+      <div class="pills" id="orientationChoices">
+        <button class="choice" data-value="Nord">Nord</button><button class="choice" data-value="Ost">Ost</button><button class="choice" data-value="Süd">Süd</button><button class="choice active" data-value="West">West</button>
+      </div>
+
+      <div class="input2">
+        <div class="field"><label>Breite (cm)</label><input id="widthInput" type="number" min="20" value="140"></div>
+        <div class="field"><label>Höhe (cm)</label><input id="heightInput" type="number" min="20" value="150"></div>
+      </div>
+
+      <div class="group-title">Wie viele Glasfelder?</div>
+      <div class="pills" id="sectionChoices">
+        <button class="choice active" data-value="1">1</button><button class="choice" data-value="2">2</button><button class="choice" data-value="3">3</button><button class="choice" data-value="4">4+</button>
+      </div>
+
+      <div class="field">
+        <label>Verglasung</label>
+        <select id="glazingSelect">
+          <option value="Doppelverglasung" selected>Doppelverglasung</option>
+          <option value="Dreifachverglasung">Dreifachverglasung</option>
+          <option value="Einfachverglasung">Einfachverglasung</option>
+          <option value="Unbekannt">Unbekannt / nicht sicher</option>
+        </select>
+      </div>
+
+      <div class="group-title">Zusätzliche Informationen</div>
+      <div class="check-pills" id="extraChoices">
+        <button class="check-choice" data-value="lowe">Low‑E Beschichtung</button>
+        <button class="check-choice" data-value="historic">Historisches Gebäude</button>
+        <button class="check-choice" data-value="tinted">Getöntes / strukturiertes Glas</button>
+        <button class="check-choice" data-value="existingFilm">Vorhandene Fensterfolie</button>
+        <button class="check-choice" data-value="unsure">Nicht sicher</button>
+      </div>
+
+      <div class="navrow"><button class="btn secondary" id="backHome">← Zurück</button><button class="btn primary" id="analyseBtn">Analyse starten →</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="result">
+  <div class="container">
+    <div class="panel">
+      <div class="eyebrow">AI Recommendation · Schritt 3</div>
+      <h2>Deine Empfehlung</h2>
+      <div class="progress"><div class="dot">1</div><div class="grow"></div><div class="dot">2</div><div class="grow"></div><div class="dot active">3</div></div>
+      <div id="resultContent" class="result-layout"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="simulator">
+  <div class="container panel">
+    <div class="eyebrow">Live Simulation</div>
+    <h2>Sieh, wie KlimaSkin reagiert.</h2>
+    <p class="muted">Zieh die Regler oder nutze ein Preset. Das Fenster, der Modus und die Erklärung ändern sich sofort.</p>
+    <div class="sim-grid">
+      <div>
+        <div class="presets">
+          <button class="choice" data-preset="cool">Kühler Morgen</button>
+          <button class="choice" data-preset="hot">Heißer Sommertag</button>
+          <button class="choice" data-preset="extreme">Extreme Hitze</button>
+          <button class="choice" data-preset="winter">Wintersonne</button>
+        </div>
+        <div class="field"><label>Jahreszeit</label><select id="season"><option>Frühling</option><option selected>Sommer</option><option>Herbst</option><option>Winter</option></select></div>
+        <div class="slider"><div class="slider-top"><span>Außentemperatur</span><span id="outVal">32°C</span></div><input id="outRange" type="range" min="-10" max="45" value="32"></div>
+        <div class="slider"><div class="slider-top"><span>Innentemperatur</span><span id="inVal">24°C</span></div><input id="inRange" type="range" min="10" max="35" value="24"></div>
+        <div class="slider"><div class="slider-top"><span>Sonneneinstrahlung</span><span id="sunVal">80%</span></div><input id="sunRange" type="range" min="0" max="100" value="80"></div>
+        <div class="slider"><div class="slider-top"><span>Glastemperatur</span><span id="glassVal">41°C</span></div><input id="glassRange" type="range" min="10" max="60" value="41"></div>
+        <div class="small">Vereinfachte MVP-Logik zur Demonstration des Entscheidungsprinzips – keine wissenschaftlich validierte thermische Simulation.</div>
+      </div>
+      <div>
+        <div class="sim-real">
+          <div class="sim-window">
+            <div class="cityscape"></div><div class="church"></div><div class="sim-shade" id="simShade"></div>
+            <div class="modebadge" id="modeBadge">Heat Protection</div>
+          </div>
+        </div>
+        <div class="sim-metrics">
+          <div class="metric">Aktueller Modus<b id="metricMode">Heat Protection</b></div>
+          <div class="metric">Solarer Schutz<b id="metricProtection">mittel</b></div>
+          <div class="metric">Tageslicht<b id="metricLight">hoch</b></div>
+        </div>
+        <div class="explain"><b>Warum dieser Modus?</b><div id="whyMode" class="muted" style="margin-top:6px"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="installation">
+  <div class="container cards3">
+    <div class="panel" style="grid-column:1/-1">
+      <div class="eyebrow">Installation</div>
+      <h2>Einfache Installation in 4 Schritten</h2>
+      <p class="muted">Klicke auf einen Schritt, um Details zu sehen.</p>
+      <div class="install-grid" id="installGrid">
+        <div class="install-step active" data-step="1"><div class="install-pic"></div><p><b>1. Reinigen</b><br><span class="small">Glas gründlich vorbereiten.</span></p></div>
+        <div class="install-step" data-step="2"><div class="install-pic"></div><p><b>2. Aufbringen</b><br><span class="small">Pre-cut Film auf das Glas.</span></p></div>
+        <div class="install-step" data-step="3"><div class="install-pic"></div><p><b>3. Verbinden</b><br><span class="small">Edge Connector + Window Node.</span></p></div>
+        <div class="install-step" data-step="4"><div class="install-pic"></div><p><b>4. Aktivieren</b><br><span class="small">Kurzer Systemcheck.</span></p></div>
+      </div>
+      <div class="install-detail" id="installDetail"><b>Schritt 1:</b> Glasfläche reinigen und trocknen. Die KlimaSkin-Folie wird passend zugeschnitten geliefert.</div>
+    </div>
+
+    <div class="panel" id="dashboard">
+      <div class="eyebrow">Dashboard · Demo</div>
+      <h2>Mein KlimaSkin</h2>
+      <div class="dashboard-grid">
+        <div class="kpi"><span class="small">Raumtemperatur</span><strong>24.1°C</strong></div>
+        <div class="kpi"><span class="small">Luftfeuchtigkeit</span><strong>52%</strong></div>
+        <div class="kpi"><span class="small">Status</span><strong>Komfortabel</strong></div>
+      </div>
+      <div class="rooms">
+        <div class="room" data-room="Wohnzimmer – Ost"><div><b>Wohnzimmer – Ost</b><div class="room-status">Clear Mode</div></div><div>22°C</div><div>›</div></div>
+        <div class="room" data-room="Schlafzimmer – Süd"><div><b>Schlafzimmer – Süd</b><div class="room-status">Heat Protection</div></div><div>26°C</div><div>›</div></div>
+        <div class="room" data-room="Küche – West"><div><b>Küche – West</b><div class="room-status">Maximum Protection</div></div><div>28°C</div><div>›</div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="eyebrow">KlimaSkin 2.0</div>
+      <h2>Safety by design.</h2>
+      <p class="muted">Unsichere Fenstdaten führen nicht zu einer automatischen Empfehlung. Stattdessen stoppt die KI und schlägt einen Human Expert Review vor.</p>
+      <button class="btn primary" id="safetyBottom">Safety-Prinzipien öffnen</button>
+    </div>
+
+    <div class="panel">
+      <div class="eyebrow">Demo</div>
+      <h2>Bereit für die Präsentation.</h2>
+      <p class="muted">Alle Daten bleiben lokal im Browser. Es gibt keinen echten Checkout und keine Datenübertragung.</p>
+      <button class="btn secondary" id="resetBtn">Demo zurücksetzen</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <strong>KlimaSkin · Interactive MVP 2035</strong><br>
+    IMC Krems · Emerging Technologies · Konzept & Prototyp von <strong>Veronika & Viktoriia</strong>
+  </div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modalbox">
+    <div class="modalhead"><h3 id="modalTitle">KlimaSkin</h3><button class="x" id="closeModal">×</button></div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const state={
+  building:'Wohnung',owner:'Miete',location:'Krems, Österreich',
+  orientation:'West',sections:'1',glazing:'Doppelverglasung',extras:new Set(),
+  width:140,height:150,cart:0,compatibility:'ok'
+};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function activateGroup(selector,key){
+  $$(selector+' .choice').forEach(btn=>btn.addEventListener('click',()=>{
+    $$(selector+' .choice').forEach(b=>b.classList.remove('active'));btn.classList.add('active');state[key]=btn.dataset.value;
+  }));
+}
+activateGroup('#buildingChoices','building');
+activateGroup('#ownerChoices','owner');
+activateGroup('#orientationChoices','orientation');
+activateGroup('#sectionChoices','sections');
+
+$('#toWindow').onclick=()=>$('#windowStep').scrollIntoView({behavior:'smooth'});
+$('#backHome').onclick=()=>$('#config').scrollIntoView({behavior:'smooth'});
+
+$$('#extraChoices .check-choice').forEach(btn=>btn.addEventListener('click',()=>{
+  btn.classList.toggle('active');
+  const v=btn.dataset.value;
+  if(btn.classList.contains('active')) state.extras.add(v); else state.extras.delete(v);
+}));
+
+$('#photoInput').addEventListener('change',e=>{
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>$('#uploadBox').innerHTML='<img alt="Fensterfoto" src="'+r.result+'">';
+  r.readAsDataURL(f);
+});
+
+$('#analyseBtn').onclick=()=>{
+  state.location=$('#locationInput').value.trim()||'Nicht angegeben';
+  state.width=Number($('#widthInput').value);
+  state.height=Number($('#heightInput').value);
+  state.glazing=$('#glazingSelect').value;
+  if(!state.width||!state.height||state.width<20||state.height<20){showToast('Bitte gültige Fenstermaße eingeben.');return;}
+  const uncertain=state.glazing==='Unbekannt'||state.extras.has('unsure')||state.extras.has('tinted')||state.extras.has('existingFilm');
+  const hardRisk=state.glazing==='Einfachverglasung'&&state.extras.has('tinted');
+  state.compatibility=hardRisk?'bad':uncertain?'warn':'ok';
+  renderResult();
+  $('#result').scrollIntoView({behavior:'smooth'});
+};
+
+function renderResult(){
+  const box=$('#resultContent');
+  const orientationReason=state.orientation==='West'?'Westfenster erhalten am Nachmittag häufig intensive Sonne.':
+    state.orientation==='Süd'?'Südfenster erhalten über den Tag viel direkte Sonneneinstrahlung.':
+    state.orientation==='Ost'?'Ostfenster erhalten vor allem am Vormittag direkte Sonne.':'Nordfenster haben meist geringere direkte Sonneneinstrahlung.';
+  const extras=[...state.extras];
+  const extraText=extras.length?('Zusatzangaben: '+extras.map(x=>({lowe:'Low‑E',historic:'historisches Gebäude',tinted:'getönt/strukturiert',existingFilm:'bestehende Folie',unsure:'unsicher'}[x])).join(', ')):'Keine zusätzlichen Risikohinweise ausgewählt.';
+
+  if(state.compatibility==='ok'){
+    box.innerHTML=`
+      <div class="result-card status-ok">
+        <div class="statusline">✓ Kompatibel</div>
+        <div class="product-name">KlimaSkin EC‑2</div>
+        <div class="muted">Empfohlen für ${state.building.toLowerCase()} in ${state.location}.</div>
+        <ul>
+          <li>${state.sections} zugeschnittene Film-Modul(e)</li>
+          <li>1 Window Node</li><li>1 KlimaHub</li><li>digitale Konfiguration</li>
+        </ul>
+        <div class="price">399 € <span class="small">Starter Kit · Zielpreis des 2035-Konzepts</span></div>
+        <div class="cart-box"><button class="btn primary" id="addCart">In den Warenkorb</button><a class="btn secondary" href="#simulator">Zum Simulator</a></div>
+      </div>
+      <div>
+        <div class="why-list">
+          <div class="why"><b>Warum diese Empfehlung?</b>${orientationReason}</div>
+          <div class="why"><b>Verglasung</b>${state.glazing} ist in diesem MVP als kompatibel klassifiziert.</div>
+          <div class="why"><b>Fenstergröße</b>${state.width} × ${state.height} cm · ${state.sections} Glasfeld(er).</div>
+          <div class="why"><b>Zusatzinfos</b>${extraText}</div>
+        </div>
+      </div>`;
+    setTimeout(()=>$('#addCart').onclick=()=>{state.cart++;updateCart();showToast('KlimaSkin EC‑2 wurde zum Demo-Warenkorb hinzugefügt.');},0);
+  }else if(state.compatibility==='warn'){
+    box.innerHTML=`
+      <div class="result-card status-warn">
+        <div class="statusline">⚠ Zusätzliche Prüfung erforderlich</div>
+        <div class="product-name">Human Expert Review</div>
+        <p>Die Kompatibilität kann mit den vorhandenen Daten nicht sicher bestätigt werden.</p>
+        <p><b>Die KI darf bei Unsicherheit nicht raten.</b></p>
+        <button class="btn primary" id="expertBtn">Expertenprüfung anfordern</button>
+      </div>
+      <div class="why-list">
+        <div class="why"><b>Warum?</b>${state.glazing==='Unbekannt'?'Der Verglasungstyp ist unbekannt.':extraText}</div>
+        <div class="why"><b>Was passiert jetzt?</b>Ein KlimaSkin-Spezialist würde Fotos und Angaben manuell prüfen.</div>
+        <div class="why"><b>Black-Mirror-Lesson</b>Safety before convenience.</div>
+      </div>`;
+    setTimeout(()=>$('#expertBtn').onclick=openExpert,0);
+  }else{
+    box.innerHTML=`
+      <div class="result-card status-bad">
+        <div class="statusline">✕ Aktuell nicht kompatibel</div>
+        <div class="product-name">Keine automatische Freigabe</div>
+        <p>Diese Kombination ist im aktuellen MVP als nicht sicher eingestuft.</p>
+        <button class="btn secondary" onclick="document.querySelector('#windowStep').scrollIntoView({behavior:'smooth'})">Daten bearbeiten</button>
+      </div>
+      <div class="why-list">
+        <div class="why"><b>Grund</b>Die ausgewählte Verglasung in Kombination mit getöntem/strukturiertem Glas erfordert eine andere technische Lösung.</div>
+        <div class="why"><b>Nächster Schritt</b>Alternative Beratung statt automatischer Bestellung.</div>
+      </div>`;
+  }
+}
+renderResult();
+
+function updateCart(){ $('#cartCount').textContent=state.cart; }
+$('#cartBtn').onclick=()=>{
+  openModal('Demo-Warenkorb',state.cart?`<p><b>${state.cart} × KlimaSkin EC‑2 Starter Kit</b></p><p>Demo-Summe: <b>${state.cart*399} €</b></p><p class="small">Kein echter Checkout – nur MVP-Demonstration.</p><button class="btn primary" onclick="document.querySelector('#modal').classList.remove('show');showToast('Demo-Checkout abgeschlossen.')">Demo-Checkout</button>`:'<p>Der Demo-Warenkorb ist leer.</p>');
+};
+
+function openExpert(){
+  openModal('Expertenprüfung anfordern',`
+    <p>Ein KlimaSkin-Spezialist würde diese Konfiguration persönlich prüfen.</p>
+    <div class="field"><label>Name</label><input id="expName" placeholder="Vorname Nachname"></div>
+    <div class="field"><label>E-Mail</label><input id="expMail" placeholder="name@example.com"></div>
+    <div class="field"><label>Notiz</label><input id="expNote" placeholder="optional"></div>
+    <div class="navrow"><span></span><button class="btn primary" id="sendExpert">Anfrage simulieren</button></div>`);
+  setTimeout(()=>$('#sendExpert').onclick=()=>{showToast('Demo-Anfrage gespeichert. Es wurden keine Daten versendet.');$('#modal').classList.remove('show');},0);
+}
+
+function openModal(title,body){$('#modalTitle').textContent=title;$('#modalBody').innerHTML=body;$('#modal').classList.add('show')}
+$('#closeModal').onclick=()=>$('#modal').classList.remove('show');
+$('#modal').addEventListener('click',e=>{if(e.target===$('#modal'))$('#modal').classList.remove('show')});
+
+$('#safetyBtn').onclick=$('#safetyBottom').onclick=()=>openModal('KlimaSkin 2.0 · Safety',`
+  <ol>
+    <li><b>AI Safety Check:</b> Bei fehlenden Informationen keine automatische Empfehlung.</li>
+    <li><b>Human Expert Review:</b> Unsichere Fälle werden von Menschen geprüft.</li>
+    <li><b>Compatibility Database:</b> Kompatibel · Zusatzprüfung · Nicht kompatibel.</li>
+    <li><b>Thermal Safety Monitoring:</b> Ungewöhnliche Glastemperaturen lösen einen sicheren Zustand aus.</li>
+  </ol><p><b>AI first. Human when necessary. Safety always.</b></p>`);
+
+$('#whyNowBtn').onclick=()=>openModal('Warum jetzt?',`<p>Hitzewellen werden häufiger. Gleichzeitig werden Smart Materials, IoT-Sensoren, kleine Photovoltaik-Module und KI-basierte Steuerung günstiger und zuverlässiger.</p><p>KlimaSkin verbindet diese Entwicklungen in einer Retrofit-Lösung für bestehende Fenster.</p>`);
+
+$$('#modeCards .mode-card').forEach(card=>card.onclick=()=>{
+  $$('#modeCards .mode-card').forEach(c=>c.classList.remove('active'));card.classList.add('active');
+  showToast(card.dataset.name+' ausgewählt.');
+});
+
+const sim={season:$('#season'),out:$('#outRange'),inside:$('#inRange'),sun:$('#sunRange'),glass:$('#glassRange')};
+Object.values(sim).forEach(el=>el.addEventListener('input',updateSim));
+Object.values(sim).forEach(el=>el.addEventListener('change',updateSim));
+
+$$('[data-preset]').forEach(btn=>btn.onclick=()=>{
+  const p=btn.dataset.preset;
+  if(p==='cool'){sim.season.value='Sommer';sim.out.value=20;sim.inside.value=21;sim.sun.value=25;sim.glass.value=23}
+  if(p==='hot'){sim.season.value='Sommer';sim.out.value=32;sim.inside.value=25;sim.sun.value=78;sim.glass.value=38}
+  if(p==='extreme'){sim.season.value='Sommer';sim.out.value=38;sim.inside.value=29;sim.sun.value=96;sim.glass.value=48}
+  if(p==='winter'){sim.season.value='Winter';sim.out.value=2;sim.inside.value=20;sim.sun.value=70;sim.glass.value=22}
+  updateSim();
+});
+
+function updateSim(){
+  const season=sim.season.value,out=+sim.out.value,inside=+sim.inside.value,sun=+sim.sun.value,glass=+sim.glass.value;
+  $('#outVal').textContent=out+'°C';$('#inVal').textContent=inside+'°C';$('#sunVal').textContent=sun+'%';$('#glassVal').textContent=glass+'°C';
+  let mode='Clear Mode',alpha=.02,prot='niedrig',light='sehr hoch',why='Aktuell besteht kein deutliches Überhitzungsrisiko.';
+  if(season==='Winter'&&inside<=22){why='Winterbetrieb: Die Sonnenwärme kann genutzt werden, weil aktuell kein Überhitzungsrisiko besteht.'}
+  else if(sun<40){why='Die Sonneneinstrahlung ist gering. Zusätzlicher Hitzeschutz ist nicht notwendig.'}
+  else if(sun>=80&&(inside>=26||glass>=40)){mode='Maximum Protection';alpha=.34;prot='hoch';light='mittel';why='Sehr hohe Sonneneinstrahlung plus hohe Innen- oder Glastemperatur. KlimaSkin erhöht den Schutz.'}
+  else if((sun>=40&&sun<80&&glass>=32)||(sun>=60&&glass>=34)){mode='Heat Protection';alpha=.17;prot='mittel';light='hoch';why='Sonneneinstrahlung und Glastemperatur steigen. KlimaSkin reduziert den solaren Wärmeeintrag.'}
+  $('#simShade').style.background=`rgba(25,76,110,${alpha})`;$('#modeBadge').textContent=mode;$('#metricMode').textContent=mode;$('#metricProtection').textContent=prot;$('#metricLight').textContent=light;$('#whyMode').textContent=why;
+}
+updateSim();
+
+const installText={
+  1:'<b>Schritt 1:</b> Glasfläche reinigen und trocknen. Die KlimaSkin-Folie wird passend zugeschnitten geliefert.',
+  2:'<b>Schritt 2:</b> Schutzlage abziehen und die pre-cut KlimaSkin-Folie sauber auf dem Glas positionieren.',
+  3:'<b>Schritt 3:</b> Edge Connector an der vorgesehenen Stelle mit dem Window Node verbinden.',
+  4:'<b>Schritt 4:</b> System aktivieren. Der Window Node führt einen kurzen Kompatibilitäts- und Sensorcheck durch.'
+};
+$$('.install-step').forEach(s=>s.onclick=()=>{
+  $$('.install-step').forEach(x=>x.classList.remove('active'));s.classList.add('active');$('#installDetail').innerHTML=installText[s.dataset.step];
+});
+
+$$('.room').forEach(r=>r.onclick=()=>openModal(r.dataset.room,`<p>Dieser Raum ist Teil des Demo-Dashboards.</p><p><b>Status:</b> ${r.querySelector('.room-status').textContent}</p><p class="small">In einer späteren Produktversion könnten hier Verlaufsdaten, Temperatur und manuelle Einstellungen angezeigt werden.</p>`));
+
+$('#resetBtn').onclick=()=>{localStorage.clear();location.reload()};
+function showToast(t){const x=$('#toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
+</script>
+</body>
+</html>
