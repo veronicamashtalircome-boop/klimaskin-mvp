@@ -268,7 +268,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 
     <div class="panel hero-photo-card">
       <div class="hero-image-wrap">
-        <img src="window-closeup.png" alt="KlimaSkin Fenster in einem hellen Wohnraum" class="hero-image">
+        <img src="hero-main.png" alt="KlimaSkin Fenster in einem hellen Wohnraum" class="hero-image">
         <div class="hero-float">
           <span class="hero-status">☀️ Sonne erkannt</span>
           <span class="hero-status">🪟 Smart Film bereit</span>
@@ -297,7 +297,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 
       <div class="system-layout">
         <div class="system-media">
-          <img src="system-overview.png" alt="KlimaSkin mit Smart Film, Window Node, KlimaHub, Edge Connector und Solar Control Strip">
+          <img src="system-components.png" alt="KlimaSkin Systemübersicht mit Smart Film, Window Node, KlimaHub und Connector">
           <div class="system-media-note">Die Visualisierung zeigt, wo die wichtigsten KlimaSkin-Komponenten am Fenster und im Raum sitzen.</div>
         </div>
 
@@ -455,7 +455,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
       </div>
       <div>
         <div class="sim-photo-wrap">
-          <img src="<img src="window-closeup.png"" alt="KlimaSkin Fenster in Nahansicht" class="sim-photo-img">
+          <img src="simulator-window.png" alt="KlimaSkin Fenster in Nahansicht" class="sim-photo-img">
           <div class="sim-shade" id="simShade"></div>
           <div class="sim-photo-highlight"></div>
           <div class="modebadge" id="modeBadge">Heat Protection</div>
@@ -492,7 +492,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
       <div class="install-grid-new" id="installCards">
         <button class="install-card-new active" data-install="1">
           <div class="install-card-img">
-            <img src="<img src="window-closeup.png"" alt="Fenster vor der Installation">
+            <img src="install-1.png" alt="Schritt 1: Fenster reinigen">
             <span class="install-number">1</span>
           </div>
           <h3>Vorbereiten</h3>
@@ -501,7 +501,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 
         <button class="install-card-new" data-install="2">
           <div class="install-card-img">
-            <img src="<img src="window-closeup.png"" alt="Smart Film auf dem Fenster">
+            <img src="install-2.png" alt="Schritt 2: KlimaSkin Film aufbringen">
             <div class="install-film-overlay"></div>
             <span class="install-number">2</span>
           </div>
@@ -511,7 +511,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 
         <button class="install-card-new" data-install="3">
           <div class="install-card-img focus-right">
-            <img src="system-overview.png" alt="Edge Connector und Window Node verbinden">
+            <img src="install-3.png" alt="Schritt 3: Window Node und Connector montieren">
             <span class="install-number">3</span>
           </div>
           <h3>Verbinden</h3>
@@ -520,7 +520,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 
         <button class="install-card-new" data-install="4">
           <div class="install-card-img focus-left">
-            <img src="system-overview.png" alt="KlimaHub und System aktivieren">
+            <img src="install-4.png" alt="Schritt 4: KlimaHub aktivieren">
             <span class="install-number">4</span>
           </div>
           <h3>Aktivieren</h3>
@@ -530,7 +530,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 
       <div class="install-detail-v2">
         <div class="install-visual">
-          <img src="<img src="window-closeup.png"" alt="Schritt 1 – Fenster vorbereiten" id="installDetailImage">
+          <img src="install-1.png" alt="Schritt 1 – Fenster vorbereiten" id="installDetailImage">
         </div>
 
         <div class="install-content">
@@ -823,7 +823,7 @@ const installData={
   1:{
     step:'Schritt 1 von 4',
     title:'Fenster vorbereiten',
-    image:'<img src="window-closeup.png"',
+    image:'install-1.png',
     position:'center',
     text:'Vor dem Aufbringen wird die Glasfläche kontrolliert und gründlich gereinigt. Eine saubere, trockene Oberfläche ist die Grundlage für eine gleichmäßige Montage.',
     list:['Staub, Fett und Rückstände entfernen','Glas vollständig trocknen lassen','Kanten und vorhandene Beschichtungen prüfen'],
@@ -835,7 +835,7 @@ const installData={
   2:{
     step:'Schritt 2 von 4',
     title:'Smart Film aufbringen',
-    image:'<img src="window-closeup.png"',
+    image:'install-2.png',
     position:'center',
     text:'Die vorkonfigurierte Filmfläche wird passend zum Fenster ausgerichtet und gleichmäßig aufgebracht. Im MVP steht dabei eine einfache, nachvollziehbare Nachrüstung im Mittelpunkt.',
     list:['Film vor dem Kontakt exakt ausrichten','Schutzlage schrittweise entfernen','Von einer Seite zur anderen gleichmäßig anlegen','Luftblasen und Falten vermeiden'],
@@ -847,8 +847,8 @@ const installData={
   3:{
     step:'Schritt 3 von 4',
     title:'Edge Connector und Window Node verbinden',
-    image:'system-overview.png',
-    position:'72% center',
+    image:'install-3.png',
+    position:'center',
     text:'Der Edge Connector stellt die kompakte Verbindung zwischen Smart Film und Window Node her. Der Window Node sitzt direkt am Fenster und übernimmt die lokale Sensorik und Steuerung.',
     list:['Edge Connector an der vorgesehenen Stelle anschließen','Verbindung zum Window Node herstellen','Sitz der Komponenten kontrollieren','Leitung und Kontaktstellen spannungsfrei halten'],
     note:'Der KlimaHub ist nicht die direkte Verbindung zur Folie; die lokale Fenstersteuerung erfolgt über den Window Node.',
@@ -859,8 +859,8 @@ const installData={
   4:{
     step:'Schritt 4 von 4',
     title:'System aktivieren',
-    image:'system-overview.png',
-    position:'22% center',
+    image:'install-4.png',
+    position:'center',
     text:'Nach der Montage wird das System aktiviert. Der Window Node führt einen kurzen Sensor- und Systemcheck durch; der KlimaHub kann zusätzlichen Raumklima-Kontext bereitstellen.',
     list:['Window Node aktivieren','Systemstatus kontrollieren','Sensorwerte prüfen','Ersten Moduswechsel im Simulator bzw. Dashboard nachvollziehen'],
     note:'Bei unsicheren Sensordaten oder unbekannter Verglasung soll das System nicht raten, sondern eine zusätzliche Prüfung verlangen.',
