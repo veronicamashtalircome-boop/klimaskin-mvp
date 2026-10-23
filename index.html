@@ -142,8 +142,8 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 
 /* ===== KlimaSkin customer-facing redesign ===== */
 .hero-photo-card{display:flex;flex-direction:column;gap:14px;min-height:560px}
-.hero-image-wrap{position:relative;overflow:hidden;border-radius:24px;min-height:455px;background:#e9e3db;border:1px solid var(--line)}
-.hero-image{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.hero-image-wrap{position:relative;overflow:hidden;border-radius:24px;min-height:455px;background:#fff;border:1px solid var(--line)}
+.hero-image{width:100%;height:100%;object-fit:contain;object-position:center;display:block;position:absolute;inset:0}
 .hero-float{position:absolute;left:18px;bottom:18px;display:flex;gap:8px;flex-wrap:wrap}
 .hero-status{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.7);padding:9px 12px;border-radius:999px;font-size:12px;font-weight:850;box-shadow:0 8px 22px rgba(0,0,0,.1)}
 .hero-chip-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -177,7 +177,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 .process-card .small{line-height:1.45}
 
 .sim-photo-wrap{position:relative;overflow:hidden;border-radius:24px;height:430px;border:1px solid var(--line);background:#eae4dc}
-.sim-photo-img{width:100%;height:100%;object-fit:cover;display:block}
+.sim-photo-img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#fff}
 .sim-shade{position:absolute;inset:0;background:rgba(25,76,110,.17);transition:.25s;pointer-events:none;mix-blend-mode:multiply}
 .sim-photo-highlight{position:absolute;inset:0;border:12px solid rgba(255,255,255,.12);pointer-events:none}
 .sim-photo-caption{margin-top:10px;font-size:12px;color:var(--muted)}
@@ -190,7 +190,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 .install-card-new:hover{transform:translateY(-2px)}
 .install-card-new.active{border-color:#9fc0d8;box-shadow:0 0 0 3px rgba(47,127,180,.12)}
 .install-card-img{height:155px;border-radius:14px;overflow:hidden;margin-bottom:12px;position:relative;background:#eee7df}
-.install-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.install-card-img img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#fff}
 .install-card-img.focus-right img{object-position:72% center}
 .install-card-img.focus-left img{object-position:22% center}
 .install-film-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,127,180,.08),rgba(17,58,90,.27));pointer-events:none}
@@ -199,7 +199,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 .install-card-new p{margin:0;font-size:13px;color:#5c6a79}
 .install-detail-v2{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:#eef4f8;border:1px solid #c9dae6;border-radius:22px;padding:20px}
 .install-visual{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;min-height:350px}
-.install-visual img{width:100%;height:100%;min-height:350px;object-fit:cover;display:block}
+.install-visual img{width:100%;height:100%;min-height:350px;object-fit:contain;object-position:center;display:block;background:#fff}
 .install-content{display:flex;flex-direction:column;gap:12px}
 .detail-step{font-size:12px;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.08em}
 .install-content h3{margin:0;font-size:32px}
@@ -387,10 +387,10 @@ button.room{width:100%;text-align:left;font:inherit;color:inherit;transition:.2s
       <div class="section-intro product-intro-row">
         <div>
           <div class="eyebrow">KlimaSkin System</div>
-          <h2>Fünf Komponenten. Ein intelligentes Fenstersystem.</h2>
+          <h2>Vier Komponenten. Ein intelligentes Fenstersystem.</h2>
           <p class="muted">Starte mit der Gesamtansicht und öffne anschließend jede Komponente einzeln. So wird sofort sichtbar, wo sie sitzt, was sie macht und warum sie für das Gesamtsystem wichtig ist.</p>
         </div>
-        <div class="system-summary-badge"><b>5 Komponenten</b><span>1 vernetztes Retrofit-System</span></div>
+        <div class="system-summary-badge"><b>4 Komponenten</b><span>1 vernetztes Retrofit-System</span></div>
       </div>
 
       <div class="system-tabs system-tabs-premium" id="systemTabs">
@@ -399,14 +399,13 @@ button.room{width:100%;text-align:left;font:inherit;color:inherit;transition:.2s
         <button class="system-tab-btn" data-system="node">Window Node</button>
         <button class="system-tab-btn" data-system="hub">KlimaHub</button>
         <button class="system-tab-btn" data-system="connector">H Connector</button>
-        <button class="system-tab-btn" data-system="solar">Solar Control Strip</button>
       </div>
 
       <div class="system-layout system-layout-premium">
         <div class="system-media system-media-premium" id="systemMedia">
           <div class="system-focus-label" id="systemFocusLabel">Gesamtsystem</div>
-          <img id="systemFocusImage" src="system-overview-full.png" alt="KlimaSkin Gesamtsystem mit allen Komponenten">
-          <div class="system-media-note" id="systemMediaNote">Die Gesamtansicht zeigt, wie Smart Film, Window Node, H Connector, KlimaHub und Solar Control Strip zusammenarbeiten.</div>
+          <img id="systemFocusImage" src="system-components.png" alt="KlimaSkin Gesamtsystem mit Smart Film, Window Node, H Connector und KlimaHub">
+          <div class="system-media-note" id="systemMediaNote">Die Gesamtansicht zeigt, wie Smart Film, Window Node, H Connector und KlimaHub zusammenarbeiten.</div>
           <button type="button" class="image-reset-btn" id="systemOverviewBtn">Gesamtsystem anzeigen</button>
         </div>
 
@@ -974,12 +973,12 @@ if($('#whyNowBtn')) $('#whyNowBtn').onclick=()=>openModal('Warum Retrofit?',`<p>
 
 const systemData={
   overview:{
-    tag:'Systemübersicht', title:'KlimaSkin als Gesamtsystem', image:'system-overview-full.png', fit:'contain', focus:'center', scale:1,
-    note:'Die Gesamtansicht zeigt, wie alle fünf KlimaSkin-Komponenten am bestehenden Fenster zusammenspielen.',
-    intro:'KlimaSkin ergänzt das bestehende Fenster um fünf aufeinander abgestimmte Komponenten. Jede übernimmt eine klare Aufgabe – zusammen entsteht ein automatisches Retrofit-System.',
-    specs:['5 Komponenten','Retrofit','Automatische Steuerung'],
+    tag:'Systemübersicht', title:'KlimaSkin als Gesamtsystem', image:'system-components.png', fit:'contain', focus:'center', scale:1,
+    note:'Die Gesamtansicht zeigt, wie alle vier KlimaSkin-Komponenten am bestehenden Fenster zusammenspielen.',
+    intro:'KlimaSkin ergänzt das bestehende Fenster um vier aufeinander abgestimmte Komponenten. Jede übernimmt eine klare Aufgabe – zusammen entsteht ein automatisches Retrofit-System.',
+    specs:['4 Komponenten','Retrofit','Automatische Steuerung'],
     questions:{
-      'Was gehört zum System?':'Smart Film, Window Node, H Connector, KlimaHub und Solar Control Strip.',
+      'Was gehört zum System?':'Smart Film, Window Node, H Connector und KlimaHub.',
       'Wie arbeitet es zusammen?':'Window Node und KlimaHub liefern Kontext, die Steuerung bewertet die Situation und der Smart Film passt seinen Schutzmodus an.',
       'Wo wird es installiert?':'Der größte Teil des Systems sitzt direkt am bestehenden Fenster. Der KlimaHub befindet sich im Innenraum.',
       'Was ist der Kundennutzen?':'Das bestehende Fenster bleibt erhalten und wird um automatischen, bedarfsgerechten Sonnenschutz ergänzt.'
@@ -998,15 +997,15 @@ const systemData={
     }
   },
   node:{
-    tag:'Lokale Sensorik & Steuerung', title:'Window Node', image:'system-overview-full.png', fit:'cover', focus:'71% 21%', scale:1.55,
-    note:'Window Node: lokale Sensorik und Steuerung direkt am Fenster.',
-    intro:'Der Window Node ist die lokale Steuereinheit am Fenster. Er verarbeitet relevante Messwerte und koordiniert die Reaktion des Smart Film.',
-    specs:['direkt am Fenster','Sensorik','lokale Steuerung'],
+    tag:'Sensorik, Steuerung & Energie', title:'Window Node', image:'component-window-node.png', fit:'contain', focus:'center', scale:1,
+    note:'Window Node: die schlanke Einheit am oberen Fensterbereich mit integrierter Sensorik, Steuerung und solarer Unterstützung.',
+    intro:'Der Window Node bündelt die lokale Fensterlogik in einer kompakten Einheit. Er nutzt die integrierte Solarfläche zur Unterstützung der Energieversorgung, verarbeitet relevante Messwerte und koordiniert die Reaktion des Smart Film.',
+    specs:['oben am Fenster','Sensorik & Steuerung','solar unterstützt'],
     questions:{
-      'Was ist das?':'Eine kompakte Sensor- und Steuereinheit für das einzelne Fenster.',
-      'Was macht es?':'Erfasst bzw. verarbeitet relevante Fensterdaten und gibt den passenden Modus an den Smart Film weiter.',
-      'Wo sitzt es?':'Direkt am Fensterrahmen bzw. im unmittelbaren Fensterbereich.',
-      'Warum braucht KlimaSkin es?':'Es ist die lokale Entscheidungs- und Steuerebene zwischen Messwerten und Filmreaktion.'
+      'Was ist das?':'Eine kompakte, solar unterstützte Sensor- und Steuereinheit für das einzelne Fenster.',
+      'Was macht es?':'Erfasst und verarbeitet relevante Fensterdaten, unterstützt seine Energieversorgung über die integrierte Solarfläche und gibt den passenden Modus an den Smart Film weiter.',
+      'Wo sitzt es?':'Horizontal am oberen Bereich des Fensterrahmens.',
+      'Warum braucht KlimaSkin es?':'Es verbindet lokale Messung, Steuerung und Energieunterstützung in einer Einheit und steuert damit die Reaktion des Smart Film.'
     }
   },
   hub:{
@@ -1033,18 +1032,6 @@ const systemData={
       'Warum braucht KlimaSkin es?':'Damit Film und Steuerung zuverlässig verbunden werden können, ohne eine große bauliche Installation.'
     }
   },
-  solar:{
-    tag:'Energieeinheit', title:'Solar Control Strip', image:'system-overview-full.png', fit:'cover', focus:'63% 15%', scale:1.48,
-    note:'Solar Control Strip: schlanke Energieeinheit am oberen Fensterbereich.',
-    intro:'Die Solar Control Strip unterstützt die lokale Energieversorgung direkt am Fenster und hält das Retrofit-Konzept kompakt.',
-    specs:['oben am Fenster','solar unterstützt','schlank'],
-    questions:{
-      'Was ist das?':'Eine schlanke, solar unterstützte Einheit am oberen Fensterbereich.',
-      'Was macht es?':'Nutzt verfügbares Licht, um die lokale Fenstereinheit energetisch zu unterstützen.',
-      'Wo sitzt es?':'Horizontal am oberen Bereich des Fensterrahmens.',
-      'Warum braucht KlimaSkin es?':'Sie reduziert im Konzept den Bedarf an zusätzlicher Verkabelung und unterstützt die autarke Nachrüstung.'
-    }
-  }
 };
 const systemButtons=$$('#systemTabs .system-tab-btn');
 function renderSystemDetail(key){
