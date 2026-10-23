@@ -969,7 +969,7 @@ const openSafety=()=>openModal('KlimaSkin 2.0 · Safety',`
 $('#safetyBtn').onclick=openSafety;
 if($('#safetyBottom')) $('#safetyBottom').onclick=openSafety;
 
-$('#whyNowBtn').onclick=()=>openModal('Warum Retrofit?',`<p>KlimaSkin ist als Nachrüstlösung gedacht: Das bestehende Fenster bleibt erhalten, während Smart Film, Window Node und weitere Komponenten ergänzt werden.</p><p>Für Mieter:innen, Wohnheime und ältere Gebäude kann dieser Ansatz interessanter sein als ein vollständiger Fenstertausch oder ein großer Umbau.</p>`);
+if($('#whyNowBtn')) $('#whyNowBtn').onclick=()=>openModal('Warum Retrofit?',`<p>KlimaSkin ist als Nachrüstlösung gedacht: Das bestehende Fenster bleibt erhalten, während Smart Film, Window Node und weitere Komponenten ergänzt werden.</p><p>Für Mieter:innen, Wohnheime und ältere Gebäude kann dieser Ansatz interessanter sein als ein vollständiger Fenstertausch oder ein großer Umbau.</p>`);
 
 
 const systemData={
@@ -986,7 +986,7 @@ const systemData={
     }
   },
   film:{
-    tag:'Adaptive Fensterschicht', title:'KlimaSkin Smart Film', image:'system-overview-full.png', fit:'cover', focus:'50% 52%', scale:1.42,
+    tag:'Adaptive Fensterschicht', title:'KlimaSkin Smart Film', image:'component-smart-film.png', fit:'contain', focus:'center', scale:1,
     note:'Smart Film: die adaptive Schicht auf dem bestehenden Fensterglas.',
     intro:'Der Smart Film ist die aktive Fläche des Systems. Er verändert seinen Schutzmodus abhängig von der Steuerung.',
     specs:['am Glas','adaptiv','Clear bis Protection'],
