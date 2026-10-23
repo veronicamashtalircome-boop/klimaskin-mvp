@@ -139,6 +139,93 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 @media(max-width:1050px){.hero,.product-demo,.config-shell,.result-layout,.sim-grid{grid-template-columns:1fr}.cards3{grid-template-columns:1fr}.hero-copy,.hero-visual{min-height:auto}}
 @media(max-width:760px){.links{display:none}.benefits,.steps4,.mode-grid,.install-grid,.dashboard-grid,.sim-metrics{grid-template-columns:1fr 1fr}.input2{grid-template-columns:1fr}.nav-actions .secondary{display:none}h1{font-size:44px}}
 @media(max-width:520px){.benefits,.steps4,.mode-grid,.install-grid,.dashboard-grid,.sim-metrics{grid-template-columns:1fr}.container{padding:0 15px}.navin{padding:12px 15px}.cart-pill{display:none}h1{font-size:38px}}
+
+/* ===== KlimaSkin customer-facing redesign ===== */
+.hero-photo-card{display:flex;flex-direction:column;gap:14px;min-height:560px}
+.hero-image-wrap{position:relative;overflow:hidden;border-radius:24px;min-height:455px;background:#e9e3db;border:1px solid var(--line)}
+.hero-image{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.hero-float{position:absolute;left:18px;bottom:18px;display:flex;gap:8px;flex-wrap:wrap}
+.hero-status{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.7);padding:9px 12px;border-radius:999px;font-size:12px;font-weight:850;box-shadow:0 8px 22px rgba(0,0,0,.1)}
+.hero-chip-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hero-chip{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;font-size:13px;color:#526172}
+.hero-chip b{display:block;margin-bottom:4px;color:var(--navy);font-size:14px}
+
+.system-section{display:grid;gap:24px}
+.section-intro{max-width:780px}
+.system-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.system-media{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;min-height:520px}
+.system-media img{width:100%;height:100%;min-height:520px;display:block;object-fit:cover}
+.system-media-note{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(17,58,90,.88);color:#fff;border-radius:14px;padding:11px 13px;font-size:12px;backdrop-filter:blur(8px)}
+.system-content{display:grid;gap:14px}
+.system-tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.system-tab-btn{border:1px solid var(--line);background:#fff;color:#314356;border-radius:14px;padding:12px 14px;text-align:left;font-weight:800;transition:.2s ease}
+.system-tab-btn:hover{transform:translateY(-1px)}
+.system-tab-btn.active{background:#eaf2f7;border-color:#9fc0d8;color:#103a5a;box-shadow:inset 0 0 0 1px #b5d0e1}
+.system-detail{background:#f8fbfd;border:1px solid #d4e1ea;border-radius:18px;padding:18px;min-height:245px}
+.system-detail .tag{display:inline-block;margin-bottom:8px;font-size:11px;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.08em}
+.system-detail h3{font-size:28px;margin-bottom:10px}
+.system-detail p{margin:0 0 12px;color:#49596a}
+.system-points{margin:0;padding-left:18px;color:#1d2d3e}
+.system-points li{margin-bottom:8px;line-height:1.45}
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.value-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;font-size:13px;color:#566575}
+.value-card b{display:block;margin-bottom:6px;color:var(--ink);font-size:14px}
+.how-block{padding-top:4px}
+.process-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.process-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.process-card b{display:block;margin-bottom:5px}
+.process-card .small{line-height:1.45}
+
+.sim-photo-wrap{position:relative;overflow:hidden;border-radius:24px;height:430px;border:1px solid var(--line);background:#eae4dc}
+.sim-photo-img{width:100%;height:100%;object-fit:cover;display:block}
+.sim-shade{position:absolute;inset:0;background:rgba(25,76,110,.17);transition:.25s;pointer-events:none;mix-blend-mode:multiply}
+.sim-photo-highlight{position:absolute;inset:0;border:12px solid rgba(255,255,255,.12);pointer-events:none}
+.sim-photo-caption{margin-top:10px;font-size:12px;color:var(--muted)}
+
+.installation-v2{display:grid;gap:20px}
+.install-topline{display:flex;flex-wrap:wrap;gap:10px}
+.install-pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font-size:13px;font-weight:700;color:#314356}
+.install-grid-new{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.install-card-new{border:1px solid var(--line);background:#fff;border-radius:18px;padding:12px;text-align:left;transition:.2s ease;cursor:pointer}
+.install-card-new:hover{transform:translateY(-2px)}
+.install-card-new.active{border-color:#9fc0d8;box-shadow:0 0 0 3px rgba(47,127,180,.12)}
+.install-card-img{height:155px;border-radius:14px;overflow:hidden;margin-bottom:12px;position:relative;background:#eee7df}
+.install-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.install-card-img.focus-right img{object-position:72% center}
+.install-card-img.focus-left img{object-position:22% center}
+.install-film-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,127,180,.08),rgba(17,58,90,.27));pointer-events:none}
+.install-number{position:absolute;left:10px;top:10px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.94);font-weight:900;color:var(--navy);box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.install-card-new h3{margin:0 0 8px;font-size:21px}
+.install-card-new p{margin:0;font-size:13px;color:#5c6a79}
+.install-detail-v2{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:#eef4f8;border:1px solid #c9dae6;border-radius:22px;padding:20px}
+.install-visual{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;min-height:350px}
+.install-visual img{width:100%;height:100%;min-height:350px;object-fit:cover;display:block}
+.install-content{display:flex;flex-direction:column;gap:12px}
+.detail-step{font-size:12px;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.08em}
+.install-content h3{margin:0;font-size:32px}
+.install-content p{margin:0;color:#49596a}
+.install-checklist{margin:0;padding-left:18px}
+.install-checklist li{margin-bottom:8px;line-height:1.5}
+.install-note{background:#fff;border-left:4px solid var(--orange);border-radius:12px;padding:14px;color:#415364}
+.install-mini-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.install-fact{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;font-size:12px;color:#586879}
+.install-fact b{display:block;margin-bottom:4px;color:var(--ink);font-size:13px}
+.aftercare-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.dashboard-panel{min-width:0}
+
+@media(max-width:1050px){
+  .system-layout,.install-detail-v2,.aftercare-grid{grid-template-columns:1fr}
+  .value-grid,.process-strip,.install-grid-new{grid-template-columns:repeat(2,1fr)}
+  .hero-chip-row{grid-template-columns:1fr}
+  .system-media{min-height:auto}
+  .system-media img{min-height:360px}
+}
+@media(max-width:760px){
+  .system-tabs,.value-grid,.process-strip,.install-grid-new,.install-mini-facts{grid-template-columns:1fr}
+  .hero-image-wrap{min-height:330px}
+  .sim-photo-wrap{height:330px}
+}
+
 </style>
 </head>
 <body>
@@ -158,6 +245,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 </div>
 
 <main>
+
 <section class="section" id="home">
   <div class="container hero">
     <div class="panel hero-copy">
@@ -165,77 +253,98 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
         <div class="eyebrow">KlimaSkin 2035 · Interactive MVP</div>
         <h1>Coolere Räume.<br>Helle Tage.</h1>
         <p class="lead">KlimaSkin ist ein selbstinstallierbares Retrofit-System für bestehende Fenster. Es reduziert unnötigen solaren Wärmeeintrag automatisch – ohne Klimaanlage, Fenstertausch oder großen Umbau.</p>
-        <div class="cta"><a href="#config" class="btn primary">Mein Fenster konfigurieren →</a><a href="#how" class="btn secondary">So funktioniert’s</a></div>
+        <div class="cta">
+          <a href="#config" class="btn primary">Mein Fenster konfigurieren →</a>
+          <a href="#product" class="btn secondary">Produkt verstehen</a>
+        </div>
       </div>
       <div class="benefits">
         <div class="benefit">☀️<b>Weniger Wärmeeintrag</b></div>
         <div class="benefit">🌤️<b>Tageslicht bleibt</b></div>
-        <div class="benefit">🧰<b>Kein großer Umbau</b></div>
+        <div class="benefit">🧰<b>Retrofit statt Umbau</b></div>
         <div class="benefit">🪟<b>Für bestehende Fenster</b></div>
       </div>
     </div>
-    <div class="panel hero-visual">
-      <div class="room-scene">
-        <div class="wall-line"></div>
-        <div class="real-window">
-          <div class="cityscape"></div><div class="church"></div><div class="frame-v"></div>
-          <div class="film-left"></div><div class="film-right"></div>
-          <div class="temp out">Außen 32°C</div><div class="temp in">Innen 24°C</div>
+
+    <div class="panel hero-photo-card">
+      <div class="hero-image-wrap">
+        <img src="images/window-closeup.png" alt="KlimaSkin Fenster in einem hellen Wohnraum" class="hero-image">
+        <div class="hero-float">
+          <span class="hero-status">☀️ Sonne erkannt</span>
+          <span class="hero-status">🪟 Smart Film bereit</span>
         </div>
       </div>
-      <div class="split-labels"><span><b>Ohne KlimaSkin</b> · mehr Solarwärme</span><span><b>Mit KlimaSkin</b> · adaptiver Hitzeschutz</span></div>
-      <div class="small">Illustrative Konzeptdarstellung. Keine garantierte Temperaturreduktion.</div>
+      <div class="hero-chip-row">
+        <div class="hero-chip"><b>Automatisch</b>Das System reagiert auf die aktuelle Fenstersituation.</div>
+        <div class="hero-chip"><b>Nachrüstbar</b>Das bestehende Fenster bleibt erhalten.</div>
+        <div class="hero-chip"><b>Komfortorientiert</b>Hitzeschutz, ohne Tageslicht dauerhaft zu verlieren.</div>
+      </div>
+      <div class="small">Konzeptvisualisierung des KlimaSkin-Systems im Wohnraum.</div>
     </div>
   </div>
 </section>
+
+
 
 <section class="section" id="product">
-  <div class="container cards3">
-    <div class="panel">
-      <div class="eyebrow">Produktübersicht</div>
-      <h2>Ein System für bestehende Fenster.</h2>
-      <div class="product-demo">
-        <div class="device">
-          <div class="solar"></div><div class="smartfilm"></div><div class="node"></div><div class="edge"></div>
-          <div class="label l-film"><b>KlimaSkin Film</b><br>aktive Smart-Film-Schicht</div>
-          <div class="label l-solar"><b>Solar-Modul</b><br>versorgt den Window Node</div>
-          <div class="label l-edge"><b>Edge Connector</b></div>
-          <div class="label l-node"><b>Window Node</b><br>Sensorik & Steuerung</div>
-        </div>
-        <div class="checklist">
-          <div class="check"><b>KlimaSkin Film</b><span class="small">ändert Licht- und Wärmedurchlässigkeit.</span></div>
-          <div class="check"><b>Window Node</b><span class="small">misst direkt am Fenster und steuert die Folie.</span></div>
-          <div class="check"><b>KlimaHub</b><span class="small">liefert zusätzlichen Raumklima-Kontext.</span></div>
-          <div class="check"><b>Edge Connector</b><span class="small">verbindet Film und Window Node.</span></div>
-        </div>
+  <div class="container">
+    <div class="panel system-section">
+      <div class="section-intro">
+        <div class="eyebrow">Produkt verständlich erklärt</div>
+        <h2>Fünf Komponenten. Ein intelligentes Fenstersystem.</h2>
+        <p class="muted">KlimaSkin kombiniert Smart Film, lokale Sensorik und Steuerung. Klicke auf eine Komponente, um zu sehen, welche Aufgabe sie übernimmt und wie alles zusammenarbeitet.</p>
       </div>
-    </div>
 
-    <div class="panel" id="how">
-      <div class="eyebrow">So funktioniert’s</div>
-      <h2>Messen. Entscheiden. Anpassen.</h2>
-      <div class="steps4">
-        <div class="step"><div class="n">1</div><b>Messen</b><div class="small">Sonne, Glas- und Raumtemperatur.</div></div>
-        <div class="step"><div class="n">2</div><b>Entscheiden</b><div class="small">Ist zusätzlicher Hitzeschutz nötig?</div></div>
-        <div class="step"><div class="n">3</div><b>Anpassen</b><div class="small">Film wechselt automatisch den Modus.</div></div>
-        <div class="step"><div class="n">4</div><b>Komfort</b><div class="small">Weniger Solarwärme, ohne dauerhafte Verdunkelung.</div></div>
-      </div>
-      <div class="mode-grid" id="modeCards">
-        <div class="mode-card active" data-alpha=".02" data-name="Clear Mode"><div class="miniw"><div class="mini-tint" style="background:rgba(25,76,110,.02)"></div></div><p><b>Clear Mode</b><br>hell und transparent</p></div>
-        <div class="mode-card" data-alpha=".15" data-name="Heat Protection"><div class="miniw"><div class="mini-tint" style="background:rgba(25,76,110,.15)"></div></div><p><b>Heat Protection</b><br>reduzierter Wärmeeintrag</p></div>
-        <div class="mode-card" data-alpha=".32" data-name="Maximum Protection"><div class="miniw"><div class="mini-tint" style="background:rgba(25,76,110,.32)"></div></div><p><b>Maximum Protection</b><br>stärkerer Schutz</p></div>
-        <div class="mode-card" data-alpha=".01" data-name="Winter / Clear"><div class="miniw"><div class="mini-tint" style="background:rgba(25,76,110,.01)"></div></div><p><b>Winter / Clear</b><br>Sonnenwärme nutzen</p></div>
-      </div>
-    </div>
+      <div class="system-layout">
+        <div class="system-media">
+          <img src="images/system-overview.png" alt="KlimaSkin mit Smart Film, Window Node, KlimaHub, Edge Connector und Solar Control Strip">
+          <div class="system-media-note">Die Visualisierung zeigt, wo die wichtigsten KlimaSkin-Komponenten am Fenster und im Raum sitzen.</div>
+        </div>
 
-    <div class="panel">
-      <div class="eyebrow">Warum Retrofit?</div>
-      <h2>Bestehende Gebäude statt Komplettumbau.</h2>
-      <p class="muted">KlimaSkin richtet sich besonders an Mieter:innen, Studierende, Wohnheime und ältere Gebäude, bei denen große bauliche Veränderungen schwierig oder teuer sind.</p>
-      <button class="btn secondary" id="whyNowBtn">Warum jetzt?</button>
+        <div class="system-content">
+          <div class="system-tabs" id="systemTabs">
+            <button class="system-tab-btn active" data-system="film">Smart Film</button>
+            <button class="system-tab-btn" data-system="node">Window Node</button>
+            <button class="system-tab-btn" data-system="hub">KlimaHub</button>
+            <button class="system-tab-btn" data-system="edge">Edge Connector</button>
+            <button class="system-tab-btn" data-system="solar">Solar Control Strip</button>
+          </div>
+
+          <div class="system-detail" id="systemDetail">
+            <span class="tag">Herzstück des Systems</span>
+            <h3>KlimaSkin Smart Film</h3>
+            <p>Die intelligente Folie verändert ihren Schutzmodus abhängig von den Messwerten. Sie soll übermäßigen solaren Wärmeeintrag reduzieren, ohne das Fenster dauerhaft zu verdunkeln.</p>
+            <ul class="system-points">
+              <li>reagiert auf die Steuerung des Window Node</li>
+              <li>wechselt zwischen Clear und stärkerem Hitzeschutz</li>
+              <li>bleibt Teil des bestehenden Fensters</li>
+            </ul>
+          </div>
+
+          <div class="value-grid">
+            <div class="value-card"><b>Kein Fenstertausch</b>Das bestehende Fenster wird nachgerüstet.</div>
+            <div class="value-card"><b>Lokale Steuerung</b>Der Window Node reagiert direkt am Fenster.</div>
+            <div class="value-card"><b>Zusätzlicher Kontext</b>Der KlimaHub ergänzt Raumklima-Informationen.</div>
+          </div>
+
+          <button class="btn secondary" id="whyNowBtn">Warum Retrofit?</button>
+        </div>
+      </div>
+
+      <div class="how-block" id="how">
+        <div class="eyebrow">So funktioniert’s</div>
+        <h3 style="font-size:28px;margin:8px 0 14px">Messen → Entscheiden → Anpassen → Komfort</h3>
+        <div class="process-strip">
+          <div class="process-card"><div class="n">1</div><b>Messen</b><div class="small">Der Window Node erfasst relevante Daten direkt am Fenster; der KlimaHub ergänzt Raumklima-Kontext.</div></div>
+          <div class="process-card"><div class="n">2</div><b>Entscheiden</b><div class="small">Die Steuerung prüft, ob zusätzlicher Hitzeschutz notwendig ist.</div></div>
+          <div class="process-card"><div class="n">3</div><b>Anpassen</b><div class="small">Der Smart Film wechselt automatisch in den passenden Schutzmodus.</div></div>
+          <div class="process-card"><div class="n">4</div><b>Komfort</b><div class="small">Weniger unnötiger Wärmeeintrag bei möglichst viel nutzbarem Tageslicht.</div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
 
 <section class="section" id="config">
   <div class="container config-shell">
@@ -345,12 +454,13 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
         <div class="small">Vereinfachte MVP-Logik zur Demonstration des Entscheidungsprinzips – keine wissenschaftlich validierte thermische Simulation.</div>
       </div>
       <div>
-        <div class="sim-real">
-          <div class="sim-window">
-            <div class="cityscape"></div><div class="church"></div><div class="sim-shade" id="simShade"></div>
-            <div class="modebadge" id="modeBadge">Heat Protection</div>
-          </div>
+        <div class="sim-photo-wrap">
+          <img src="images/window-closeup.png" alt="KlimaSkin Fenster in Nahansicht" class="sim-photo-img">
+          <div class="sim-shade" id="simShade"></div>
+          <div class="sim-photo-highlight"></div>
+          <div class="modebadge" id="modeBadge">Heat Protection</div>
         </div>
+        <div class="sim-photo-caption">Visuelle MVP-Demonstration: Die Farbüberlagerung zeigt den aktuell gewählten Schutzmodus.</div>
         <div class="sim-metrics">
           <div class="metric">Aktueller Modus<b id="metricMode">Heat Protection</b></div>
           <div class="metric">Solarer Schutz<b id="metricProtection">mittel</b></div>
@@ -362,51 +472,124 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
   </div>
 </section>
 
+
 <section class="section" id="installation">
-  <div class="container cards3">
-    <div class="panel" style="grid-column:1/-1">
-      <div class="eyebrow">Installation</div>
-      <h2>Einfache Installation in 4 Schritten</h2>
-      <p class="muted">Klicke auf einen Schritt, um Details zu sehen.</p>
-      <div class="install-grid" id="installGrid">
-        <div class="install-step active" data-step="1"><div class="install-pic"></div><p><b>1. Reinigen</b><br><span class="small">Glas gründlich vorbereiten.</span></p></div>
-        <div class="install-step" data-step="2"><div class="install-pic"></div><p><b>2. Aufbringen</b><br><span class="small">Pre-cut Film auf das Glas.</span></p></div>
-        <div class="install-step" data-step="3"><div class="install-pic"></div><p><b>3. Verbinden</b><br><span class="small">Edge Connector + Window Node.</span></p></div>
-        <div class="install-step" data-step="4"><div class="install-pic"></div><p><b>4. Aktivieren</b><br><span class="small">Kurzer Systemcheck.</span></p></div>
+  <div class="container">
+    <div class="panel installation-v2">
+      <div class="section-intro">
+        <div class="eyebrow">Installation</div>
+        <h2>Schritt für Schritt zur fertigen Nachrüstung.</h2>
+        <p class="muted">Die Installation soll auch für Kund:innen nachvollziehbar sein. Wähle einen Schritt aus – darunter siehst du eine detaillierte Erklärung, benötigte Handgriffe und einen praktischen Hinweis.</p>
       </div>
-      <div class="install-detail" id="installDetail"><b>Schritt 1:</b> Glasfläche reinigen und trocknen. Die KlimaSkin-Folie wird passend zugeschnitten geliefert.</div>
+
+      <div class="install-topline">
+        <div class="install-pill">🪟 bestehendes Fenster bleibt erhalten</div>
+        <div class="install-pill">✂️ vorkonfigurierte Filmgröße</div>
+        <div class="install-pill">🔌 kompakte Verbindung am Fenster</div>
+        <div class="install-pill">✓ Systemcheck nach der Montage</div>
+      </div>
+
+      <div class="install-grid-new" id="installCards">
+        <button class="install-card-new active" data-install="1">
+          <div class="install-card-img">
+            <img src="images/window-closeup.png" alt="Fenster vor der Installation">
+            <span class="install-number">1</span>
+          </div>
+          <h3>Vorbereiten</h3>
+          <p>Glasfläche prüfen, reinigen und vollständig trocknen.</p>
+        </button>
+
+        <button class="install-card-new" data-install="2">
+          <div class="install-card-img">
+            <img src="images/window-closeup.png" alt="Smart Film auf dem Fenster">
+            <div class="install-film-overlay"></div>
+            <span class="install-number">2</span>
+          </div>
+          <h3>Film aufbringen</h3>
+          <p>Die zugeschnittene Smart-Film-Schicht sauber ausrichten und anbringen.</p>
+        </button>
+
+        <button class="install-card-new" data-install="3">
+          <div class="install-card-img focus-right">
+            <img src="images/system-overview.png" alt="Edge Connector und Window Node verbinden">
+            <span class="install-number">3</span>
+          </div>
+          <h3>Verbinden</h3>
+          <p>Film, Edge Connector und Window Node miteinander verbinden.</p>
+        </button>
+
+        <button class="install-card-new" data-install="4">
+          <div class="install-card-img focus-left">
+            <img src="images/system-overview.png" alt="KlimaHub und System aktivieren">
+            <span class="install-number">4</span>
+          </div>
+          <h3>Aktivieren</h3>
+          <p>Window Node starten, Sensorcheck durchführen und Systemstatus prüfen.</p>
+        </button>
+      </div>
+
+      <div class="install-detail-v2">
+        <div class="install-visual">
+          <img src="images/window-closeup.png" alt="Schritt 1 – Fenster vorbereiten" id="installDetailImage">
+        </div>
+
+        <div class="install-content">
+          <div class="detail-step" id="installDetailStep">Schritt 1 von 4</div>
+          <h3 id="installDetailTitle">Fenster vorbereiten</h3>
+          <p id="installDetailText">Vor dem Aufbringen wird die Glasfläche kontrolliert und gründlich gereinigt. Eine saubere, trockene Oberfläche ist die Grundlage für eine gleichmäßige Montage.</p>
+
+          <ul class="install-checklist" id="installDetailList">
+            <li>Staub, Fett und Rückstände entfernen</li>
+            <li>Glas vollständig trocknen lassen</li>
+            <li>Kanten und vorhandene Beschichtungen prüfen</li>
+          </ul>
+
+          <div class="install-note" id="installDetailNote"><strong>Tipp:</strong> Bei unbekannter, getönter oder bereits beschichteter Verglasung zuerst die Kompatibilität im Konfigurator prüfen.</div>
+
+          <div class="install-mini-facts">
+            <div class="install-fact"><b>Ziel</b><span id="installGoal">Saubere Montagefläche schaffen.</span></div>
+            <div class="install-fact"><b>Kontrolle</b><span id="installCheck">Keine Rückstände oder Schäden sichtbar.</span></div>
+            <div class="install-fact"><b>Danach</b><span id="installNext">Smart Film ausrichten.</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="panel" id="dashboard">
-      <div class="eyebrow">Dashboard · Demo</div>
-      <h2>Mein KlimaSkin</h2>
-      <div class="dashboard-grid">
-        <div class="kpi"><span class="small">Raumtemperatur</span><strong>24.1°C</strong></div>
-        <div class="kpi"><span class="small">Luftfeuchtigkeit</span><strong>52%</strong></div>
-        <div class="kpi"><span class="small">Status</span><strong>Komfortabel</strong></div>
+    <div class="aftercare-grid" style="margin-top:20px">
+      <div class="panel dashboard-panel" id="dashboard">
+        <div class="eyebrow">Nach der Installation · Demo</div>
+        <h2>Mein KlimaSkin</h2>
+        <p class="muted">Nach der Aktivierung zeigt das Dashboard den aktuellen Raum- und Fenstermodus. Klicke auf einen Raum, um den Demo-Status zu öffnen.</p>
+        <div class="dashboard-grid">
+          <div class="kpi"><span class="small">Raumtemperatur</span><strong>24.1°C</strong></div>
+          <div class="kpi"><span class="small">Luftfeuchtigkeit</span><strong>52%</strong></div>
+          <div class="kpi"><span class="small">Status</span><strong>Komfortabel</strong></div>
+        </div>
+        <div class="rooms">
+          <div class="room" data-room="Wohnzimmer – Ost"><div><b>Wohnzimmer – Ost</b><div class="room-status">Clear Mode</div></div><div>22°C</div><div>›</div></div>
+          <div class="room" data-room="Schlafzimmer – Süd"><div><b>Schlafzimmer – Süd</b><div class="room-status">Heat Protection</div></div><div>26°C</div><div>›</div></div>
+          <div class="room" data-room="Küche – West"><div><b>Küche – West</b><div class="room-status">Maximum Protection</div></div><div>28°C</div><div>›</div></div>
+        </div>
       </div>
-      <div class="rooms">
-        <div class="room" data-room="Wohnzimmer – Ost"><div><b>Wohnzimmer – Ost</b><div class="room-status">Clear Mode</div></div><div>22°C</div><div>›</div></div>
-        <div class="room" data-room="Schlafzimmer – Süd"><div><b>Schlafzimmer – Süd</b><div class="room-status">Heat Protection</div></div><div>26°C</div><div>›</div></div>
-        <div class="room" data-room="Küche – West"><div><b>Küche – West</b><div class="room-status">Maximum Protection</div></div><div>28°C</div><div>›</div></div>
+
+      <div style="display:grid;gap:20px">
+        <div class="panel">
+          <div class="eyebrow">KlimaSkin 2.0</div>
+          <h2>Safety by design.</h2>
+          <p class="muted">Wenn Fenstertyp oder Beschichtung unsicher sind, gibt das MVP keine automatische Freigabe. Stattdessen wird ein Human Expert Review vorgeschlagen.</p>
+          <button class="btn primary" id="safetyBottom">Safety-Prinzipien öffnen</button>
+        </div>
+        <div class="panel">
+          <div class="eyebrow">Demo</div>
+          <h2>Bereit für die Präsentation.</h2>
+          <p class="muted">Alle eingegebenen Daten bleiben lokal im Browser. Es gibt keinen echten Checkout und keine Datenübertragung.</p>
+          <button class="btn secondary" id="resetBtn">Demo zurücksetzen</button>
+        </div>
       </div>
-    </div>
-
-    <div class="panel">
-      <div class="eyebrow">KlimaSkin 2.0</div>
-      <h2>Safety by design.</h2>
-      <p class="muted">Unsichere Fenstdaten führen nicht zu einer automatischen Empfehlung. Stattdessen stoppt die KI und schlägt einen Human Expert Review vor.</p>
-      <button class="btn primary" id="safetyBottom">Safety-Prinzipien öffnen</button>
-    </div>
-
-    <div class="panel">
-      <div class="eyebrow">Demo</div>
-      <h2>Bereit für die Präsentation.</h2>
-      <p class="muted">Alle Daten bleiben lokal im Browser. Es gibt keinen echten Checkout und keine Datenübertragung.</p>
-      <button class="btn secondary" id="resetBtn">Demo zurücksetzen</button>
     </div>
   </div>
 </section>
+
 </main>
 
 <footer class="footer">
@@ -550,20 +733,66 @@ function openModal(title,body){$('#modalTitle').textContent=title;$('#modalBody'
 $('#closeModal').onclick=()=>$('#modal').classList.remove('show');
 $('#modal').addEventListener('click',e=>{if(e.target===$('#modal'))$('#modal').classList.remove('show')});
 
-$('#safetyBtn').onclick=$('#safetyBottom').onclick=()=>openModal('KlimaSkin 2.0 · Safety',`
+const openSafety=()=>openModal('KlimaSkin 2.0 · Safety',`
   <ol>
     <li><b>AI Safety Check:</b> Bei fehlenden Informationen keine automatische Empfehlung.</li>
     <li><b>Human Expert Review:</b> Unsichere Fälle werden von Menschen geprüft.</li>
     <li><b>Compatibility Database:</b> Kompatibel · Zusatzprüfung · Nicht kompatibel.</li>
     <li><b>Thermal Safety Monitoring:</b> Ungewöhnliche Glastemperaturen lösen einen sicheren Zustand aus.</li>
   </ol><p><b>AI first. Human when necessary. Safety always.</b></p>`);
+$('#safetyBtn').onclick=openSafety;
+if($('#safetyBottom')) $('#safetyBottom').onclick=openSafety;
 
-$('#whyNowBtn').onclick=()=>openModal('Warum jetzt?',`<p>Hitzewellen werden häufiger. Gleichzeitig werden Smart Materials, IoT-Sensoren, kleine Photovoltaik-Module und KI-basierte Steuerung günstiger und zuverlässiger.</p><p>KlimaSkin verbindet diese Entwicklungen in einer Retrofit-Lösung für bestehende Fenster.</p>`);
+$('#whyNowBtn').onclick=()=>openModal('Warum Retrofit?',`<p>KlimaSkin ist als Nachrüstlösung gedacht: Das bestehende Fenster bleibt erhalten, während Smart Film, Window Node und weitere Komponenten ergänzt werden.</p><p>Für Mieter:innen, Wohnheime und ältere Gebäude kann dieser Ansatz interessanter sein als ein vollständiger Fenstertausch oder ein großer Umbau.</p>`);
 
-$$('#modeCards .mode-card').forEach(card=>card.onclick=()=>{
-  $$('#modeCards .mode-card').forEach(c=>c.classList.remove('active'));card.classList.add('active');
-  showToast(card.dataset.name+' ausgewählt.');
-});
+
+const systemData={
+  film:{
+    tag:'Herzstück des Systems',
+    title:'KlimaSkin Smart Film',
+    text:'Die intelligente Folie verändert ihren Schutzmodus abhängig von den Messwerten. Sie soll übermäßigen solaren Wärmeeintrag reduzieren, ohne das Fenster dauerhaft zu verdunkeln.',
+    points:['reagiert auf die Steuerung des Window Node','wechselt zwischen Clear und stärkerem Hitzeschutz','bleibt Teil des bestehenden Fensters']
+  },
+  node:{
+    tag:'Lokale Sensorik & Steuerung',
+    title:'Window Node',
+    text:'Der Window Node sitzt direkt am Fenster. Er verarbeitet die relevanten Messwerte und steuert den Smart Film lokal.',
+    points:['misst direkt an der Fenstersituation','verarbeitet Sensorinformationen','gibt den passenden Modus an den Film weiter']
+  },
+  hub:{
+    tag:'Zusätzlicher Raumklima-Kontext',
+    title:'KlimaHub',
+    text:'Der KlimaHub ergänzt Informationen aus dem Innenraum. Er liefert zusätzlichen Kontext, ist aber nicht das Bauteil, das den Film direkt verbindet.',
+    points:['ergänzt Raumtemperatur- und Komfortinformationen','unterstützt die Systemübersicht','kann mehrere Fenster bzw. Räume zusammenführen']
+  },
+  edge:{
+    tag:'Kompakte Verbindung',
+    title:'Edge Connector',
+    text:'Der Edge Connector verbindet den Smart Film mit dem Window Node und hält die technische Verbindung am Fensterrand möglichst unauffällig.',
+    points:['verbindet Film und lokale Steuerung','sitzt direkt am Fensterrand','ist auf eine dezente Nachrüstung ausgelegt']
+  },
+  solar:{
+    tag:'Energieversorgung',
+    title:'Solar Control Strip',
+    text:'Die schlanke Solar Control Strip nutzt Licht am Fenster, um die lokale Systemeinheit zu unterstützen und den Retrofit-Ansatz kompakt zu halten.',
+    points:['sitzt am oberen Fensterbereich','unterstützt die Energieversorgung des Window Node','vermeidet im Konzept aufwendige zusätzliche Verkabelung']
+  }
+};
+const systemButtons=$$('#systemTabs .system-tab-btn');
+function renderSystemDetail(key){
+  const item=systemData[key]; if(!item)return;
+  $('#systemDetail').innerHTML=`
+    <span class="tag">${item.tag}</span>
+    <h3>${item.title}</h3>
+    <p>${item.text}</p>
+    <ul class="system-points">${item.points.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+}
+systemButtons.forEach(btn=>btn.addEventListener('click',()=>{
+  systemButtons.forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderSystemDetail(btn.dataset.system);
+}));
+
 
 const sim={season:$('#season'),out:$('#outRange'),inside:$('#inRange'),sun:$('#sunRange'),glass:$('#glassRange')};
 Object.values(sim).forEach(el=>el.addEventListener('input',updateSim));
@@ -590,15 +819,76 @@ function updateSim(){
 }
 updateSim();
 
-const installText={
-  1:'<b>Schritt 1:</b> Glasfläche reinigen und trocknen. Die KlimaSkin-Folie wird passend zugeschnitten geliefert.',
-  2:'<b>Schritt 2:</b> Schutzlage abziehen und die pre-cut KlimaSkin-Folie sauber auf dem Glas positionieren.',
-  3:'<b>Schritt 3:</b> Edge Connector an der vorgesehenen Stelle mit dem Window Node verbinden.',
-  4:'<b>Schritt 4:</b> System aktivieren. Der Window Node führt einen kurzen Kompatibilitäts- und Sensorcheck durch.'
+const installData={
+  1:{
+    step:'Schritt 1 von 4',
+    title:'Fenster vorbereiten',
+    image:'images/window-closeup.png',
+    position:'center',
+    text:'Vor dem Aufbringen wird die Glasfläche kontrolliert und gründlich gereinigt. Eine saubere, trockene Oberfläche ist die Grundlage für eine gleichmäßige Montage.',
+    list:['Staub, Fett und Rückstände entfernen','Glas vollständig trocknen lassen','Kanten und vorhandene Beschichtungen prüfen'],
+    note:'Bei unbekannter, getönter oder bereits beschichteter Verglasung zuerst die Kompatibilität im Konfigurator prüfen.',
+    goal:'Saubere Montagefläche schaffen.',
+    check:'Keine Rückstände oder Schäden sichtbar.',
+    next:'Smart Film ausrichten.'
+  },
+  2:{
+    step:'Schritt 2 von 4',
+    title:'Smart Film aufbringen',
+    image:'images/window-closeup.png',
+    position:'center',
+    text:'Die vorkonfigurierte Filmfläche wird passend zum Fenster ausgerichtet und gleichmäßig aufgebracht. Im MVP steht dabei eine einfache, nachvollziehbare Nachrüstung im Mittelpunkt.',
+    list:['Film vor dem Kontakt exakt ausrichten','Schutzlage schrittweise entfernen','Von einer Seite zur anderen gleichmäßig anlegen','Luftblasen und Falten vermeiden'],
+    note:'Nicht sofort die komplette Schutzlage abziehen – schrittweise Arbeiten erleichtert die Ausrichtung.',
+    goal:'Film sauber und gerade positionieren.',
+    check:'Kanten liegen gleichmäßig, keine sichtbaren Falten.',
+    next:'Edge Connector anschließen.'
+  },
+  3:{
+    step:'Schritt 3 von 4',
+    title:'Edge Connector und Window Node verbinden',
+    image:'images/system-overview.png',
+    position:'72% center',
+    text:'Der Edge Connector stellt die kompakte Verbindung zwischen Smart Film und Window Node her. Der Window Node sitzt direkt am Fenster und übernimmt die lokale Sensorik und Steuerung.',
+    list:['Edge Connector an der vorgesehenen Stelle anschließen','Verbindung zum Window Node herstellen','Sitz der Komponenten kontrollieren','Leitung und Kontaktstellen spannungsfrei halten'],
+    note:'Der KlimaHub ist nicht die direkte Verbindung zur Folie; die lokale Fenstersteuerung erfolgt über den Window Node.',
+    goal:'Sichere Verbindung zwischen Film und Steuerung.',
+    check:'Connector und Window Node sitzen fest.',
+    next:'System aktivieren und prüfen.'
+  },
+  4:{
+    step:'Schritt 4 von 4',
+    title:'System aktivieren',
+    image:'images/system-overview.png',
+    position:'22% center',
+    text:'Nach der Montage wird das System aktiviert. Der Window Node führt einen kurzen Sensor- und Systemcheck durch; der KlimaHub kann zusätzlichen Raumklima-Kontext bereitstellen.',
+    list:['Window Node aktivieren','Systemstatus kontrollieren','Sensorwerte prüfen','Ersten Moduswechsel im Simulator bzw. Dashboard nachvollziehen'],
+    note:'Bei unsicheren Sensordaten oder unbekannter Verglasung soll das System nicht raten, sondern eine zusätzliche Prüfung verlangen.',
+    goal:'Funktion des Systems bestätigen.',
+    check:'Systemstatus ist plausibel und Sensorcheck abgeschlossen.',
+    next:'KlimaSkin arbeitet im passenden Modus.'
+  }
 };
-$$('.install-step').forEach(s=>s.onclick=()=>{
-  $$('.install-step').forEach(x=>x.classList.remove('active'));s.classList.add('active');$('#installDetail').innerHTML=installText[s.dataset.step];
-});
+const installCards=$$('#installCards .install-card-new');
+function renderInstall(stepKey){
+  const item=installData[stepKey];
+  if(!item)return;
+  $('#installDetailStep').textContent=item.step;
+  $('#installDetailTitle').textContent=item.title;
+  $('#installDetailText').textContent=item.text;
+  const img=$('#installDetailImage');
+  img.src=item.image;img.alt=item.title;img.style.objectPosition=item.position;
+  $('#installDetailList').innerHTML=item.list.map(point=>`<li>${point}</li>`).join('');
+  $('#installDetailNote').innerHTML=`<strong>Tipp:</strong> ${item.note}`;
+  $('#installGoal').textContent=item.goal;
+  $('#installCheck').textContent=item.check;
+  $('#installNext').textContent=item.next;
+}
+installCards.forEach(card=>card.addEventListener('click',()=>{
+  installCards.forEach(c=>c.classList.remove('active'));
+  card.classList.add('active');
+  renderInstall(card.dataset.install);
+}));
 
 $$('.room').forEach(r=>r.onclick=()=>openModal(r.dataset.room,`<p>Dieser Raum ist Teil des Demo-Dashboards.</p><p><b>Status:</b> ${r.querySelector('.room-status').textContent}</p><p class="small">In einer späteren Produktversion könnten hier Verlaufsdaten, Temperatur und manuelle Einstellungen angezeigt werden.</p>`));
 
