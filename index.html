@@ -226,6 +226,52 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
   .sim-photo-wrap{height:330px}
 }
 
+
+/* ===== Interactive customer journey v2 ===== */
+.hero-action{font:inherit;color:inherit}
+button.benefit,button.hero-chip,button.hero-status{cursor:pointer}
+button.benefit{width:100%;appearance:none}
+button.benefit:hover,button.hero-chip:hover,button.hero-status:hover{transform:translateY(-2px);border-color:#9fc0d8;box-shadow:0 10px 24px rgba(17,58,90,.09)}
+button.benefit:focus-visible,button.hero-chip:focus-visible,button.hero-status:focus-visible,.kpi-btn:focus-visible,.room:focus-visible{outline:3px solid rgba(47,127,180,.28);outline-offset:2px}
+button.hero-status{border:1px solid rgba(255,255,255,.7);font-weight:850}
+button.hero-chip{width:100%;text-align:left;appearance:none}
+.hero-hint{margin-top:8px;font-size:12px;color:var(--muted)}
+
+.dashboard-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.dashboard-live{display:flex;align-items:center;gap:8px;background:#eff8f3;border:1px solid #cfe6d8;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:850;color:#286b4e}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#2f8a62;box-shadow:0 0 0 4px rgba(47,138,98,.12)}
+.dashboard-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.kpi-btn{appearance:none;width:100%;text-align:left;cursor:pointer;transition:.2s}
+.kpi-btn:hover{transform:translateY(-2px);border-color:#9fc0d8;box-shadow:0 9px 22px rgba(17,58,90,.07)}
+button.room{width:100%;text-align:left;font:inherit;color:inherit;transition:.2s}
+.room-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.room-tag{font-size:11px;border-radius:999px;padding:4px 8px;background:#eef4f8;color:#41627a}
+.room-arrow{font-size:20px;text-align:right;color:#45657e}
+
+.modalbox.checkout-modal{width:min(760px,96vw);max-height:88vh;overflow:auto}
+.cart-line{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
+.cart-product{display:flex;gap:12px;align-items:center;min-width:0}
+.cart-thumb{width:74px;height:74px;border-radius:14px;background:#eef4f8;display:grid;place-items:center;font-size:28px;border:1px solid #d4e1ea}
+.qty-control{display:flex;align-items:center;gap:8px}
+.qty-btn{width:34px;height:34px;border:none;border-radius:10px;background:#eef2f5;font-weight:900}
+.cart-summary{margin-top:14px;border-top:1px solid var(--line);padding-top:12px;display:grid;gap:7px}
+.summary-row{display:flex;justify-content:space-between;gap:16px}.summary-row.total{font-size:20px;font-weight:900}
+.checkout-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.checkout-grid .full{grid-column:1/-1}
+.payment-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.payment-option{border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;background:#fff;display:flex;gap:8px;align-items:flex-start}
+.payment-option:has(input:checked){border-color:#86b9d8;background:#eef6fb;box-shadow:inset 0 0 0 1px #b5d0e1}
+.demo-note{background:#fff8ea;border:1px solid #efd5a4;border-radius:14px;padding:12px;color:#75551f;font-size:13px;margin-top:12px}
+.order-success{text-align:center;padding:12px 0}.success-icon{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;background:#e9f7ef;color:#2f8a62;font-size:30px;font-weight:900}
+.room-control-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.room-mode-btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px;font-weight:800;color:#395064}.room-mode-btn.active{background:#eaf2f7;border-color:#9fc0d8;color:#113a5a}
+.room-detail-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.room-detail-metrics .metric{min-width:0}
+
+@media(max-width:760px){
+  .checkout-grid,.payment-options,.room-control-grid,.room-detail-metrics{grid-template-columns:1fr}
+  .cart-line{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -259,25 +305,26 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
         </div>
       </div>
       <div class="benefits">
-        <div class="benefit">☀️<b>Weniger Wärmeeintrag</b></div>
-        <div class="benefit">🌤️<b>Tageslicht bleibt</b></div>
-        <div class="benefit">🧰<b>Retrofit statt Umbau</b></div>
-        <div class="benefit">🪟<b>Für bestehende Fenster</b></div>
+        <button type="button" class="benefit hero-action" data-hero="heat">☀️<b>Weniger Wärmeeintrag</b><span class="small">Wie funktioniert das?</span></button>
+        <button type="button" class="benefit hero-action" data-hero="light">🌤️<b>Tageslicht bleibt</b><span class="small">Modi ansehen</span></button>
+        <button type="button" class="benefit hero-action" data-hero="retrofit">🧰<b>Retrofit statt Umbau</b><span class="small">Installation ansehen</span></button>
+        <button type="button" class="benefit hero-action" data-hero="existing">🪟<b>Für bestehende Fenster</b><span class="small">Kompatibilität prüfen</span></button>
       </div>
+      <div class="hero-hint">Tipp: Auch die Produktvorteile sind anklickbar.</div>
     </div>
 
     <div class="panel hero-photo-card">
       <div class="hero-image-wrap">
         <img src="hero-main.png" alt="KlimaSkin Fenster in einem hellen Wohnraum" class="hero-image">
         <div class="hero-float">
-          <span class="hero-status">☀️ Sonne erkannt</span>
-          <span class="hero-status">🪟 Smart Film bereit</span>
+          <button type="button" class="hero-status hero-action" data-hero="sun">☀️ Sonne erkannt</button>
+          <button type="button" class="hero-status hero-action" data-hero="film">🪟 Smart Film bereit</button>
         </div>
       </div>
       <div class="hero-chip-row">
-        <div class="hero-chip"><b>Automatisch</b>Das System reagiert auf die aktuelle Fenstersituation.</div>
-        <div class="hero-chip"><b>Nachrüstbar</b>Das bestehende Fenster bleibt erhalten.</div>
-        <div class="hero-chip"><b>Komfortorientiert</b>Hitzeschutz, ohne Tageslicht dauerhaft zu verlieren.</div>
+        <button type="button" class="hero-chip hero-action" data-hero="automatic"><b>Automatisch</b>Das System reagiert auf die aktuelle Fenstersituation.</button>
+        <button type="button" class="hero-chip hero-action" data-hero="retrofit"><b>Nachrüstbar</b>Das bestehende Fenster bleibt erhalten.</button>
+        <button type="button" class="hero-chip hero-action" data-hero="comfort"><b>Komfortorientiert</b>Hitzeschutz, ohne Tageslicht dauerhaft zu verlieren.</button>
       </div>
       <div class="small">Konzeptvisualisierung des KlimaSkin-Systems im Wohnraum.</div>
     </div>
@@ -557,18 +604,28 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
 
     <div class="aftercare-grid" style="margin-top:20px">
       <div class="panel dashboard-panel" id="dashboard">
-        <div class="eyebrow">Nach der Installation · Demo</div>
-        <h2>Mein KlimaSkin</h2>
-        <p class="muted">Nach der Aktivierung zeigt das Dashboard den aktuellen Raum- und Fenstermodus. Klicke auf einen Raum, um den Demo-Status zu öffnen.</p>
+        <div class="dashboard-head">
+          <div>
+            <div class="eyebrow">Nach der Installation · Demo</div>
+            <h2>Mein KlimaSkin</h2>
+          </div>
+          <div class="dashboard-live"><span class="live-dot"></span>System online · Auto-Modus</div>
+        </div>
+        <p class="muted">Hier sieht der Kunde nach der Installation, was KlimaSkin gerade macht. Öffne einen Raum, ändere testweise den Modus oder springe direkt in den Simulator.</p>
+        <div class="dashboard-actions">
+          <button class="btn primary" id="dashSimulator">Live-Simulator öffnen</button>
+          <button class="btn secondary" id="dashSystemCheck">Systemstatus prüfen</button>
+          <button class="btn secondary" id="dashAddWindow">Weiteres Fenster konfigurieren</button>
+        </div>
         <div class="dashboard-grid">
-          <div class="kpi"><span class="small">Raumtemperatur</span><strong>24.1°C</strong></div>
-          <div class="kpi"><span class="small">Luftfeuchtigkeit</span><strong>52%</strong></div>
-          <div class="kpi"><span class="small">Status</span><strong>Komfortabel</strong></div>
+          <button type="button" class="kpi kpi-btn" data-kpi="temperature"><span class="small">Ø Raumtemperatur</span><strong>24.1°C</strong><span class="small">Details öffnen</span></button>
+          <button type="button" class="kpi kpi-btn" data-kpi="humidity"><span class="small">Luftfeuchtigkeit</span><strong>52%</strong><span class="small">Komfortbereich</span></button>
+          <button type="button" class="kpi kpi-btn" data-kpi="status"><span class="small">Systemstatus</span><strong>Komfortabel</strong><span class="small">3 Fenster aktiv</span></button>
         </div>
         <div class="rooms">
-          <div class="room" data-room="Wohnzimmer – Ost"><div><b>Wohnzimmer – Ost</b><div class="room-status">Clear Mode</div></div><div>22°C</div><div>›</div></div>
-          <div class="room" data-room="Schlafzimmer – Süd"><div><b>Schlafzimmer – Süd</b><div class="room-status">Heat Protection</div></div><div>26°C</div><div>›</div></div>
-          <div class="room" data-room="Küche – West"><div><b>Küche – West</b><div class="room-status">Maximum Protection</div></div><div>28°C</div><div>›</div></div>
+          <button type="button" class="room" data-room="Wohnzimmer – Ost" data-temp="22" data-humidity="49" data-glass="25" data-sun="35" data-mode="Clear Mode"><div><b>Wohnzimmer – Ost</b><div class="room-meta"><span class="room-status">Clear Mode</span><span class="room-tag">Auto</span></div></div><div>22°C</div><div class="room-arrow">›</div></button>
+          <button type="button" class="room" data-room="Schlafzimmer – Süd" data-temp="26" data-humidity="53" data-glass="37" data-sun="76" data-mode="Heat Protection"><div><b>Schlafzimmer – Süd</b><div class="room-meta"><span class="room-status">Heat Protection</span><span class="room-tag">Auto</span></div></div><div>26°C</div><div class="room-arrow">›</div></button>
+          <button type="button" class="room" data-room="Küche – West" data-temp="28" data-humidity="55" data-glass="44" data-sun="91" data-mode="Maximum Protection"><div><b>Küche – West</b><div class="room-meta"><span class="room-status">Maximum Protection</span><span class="room-tag">Auto</span></div></div><div>28°C</div><div class="room-arrow">›</div></button>
         </div>
       </div>
 
@@ -582,7 +639,7 @@ clip-path:polygon(0 60%,8% 48%,12% 65%,20% 36%,28% 58%,35% 28%,44% 56%,52% 37%,6
         <div class="panel">
           <div class="eyebrow">Demo</div>
           <h2>Bereit für die Präsentation.</h2>
-          <p class="muted">Alle eingegebenen Daten bleiben lokal im Browser. Es gibt keinen echten Checkout und keine Datenübertragung.</p>
+          <p class="muted">Der Kaufprozess ist als klickbarer MVP umgesetzt: Warenkorb, Kundendaten, Zahlungsart und Bestellbestätigung werden simuliert. Es findet keine echte Zahlung oder Datenübertragung statt.</p>
           <button class="btn secondary" id="resetBtn">Demo zurücksetzen</button>
         </div>
       </div>
@@ -682,7 +739,7 @@ function renderResult(){
           <div class="why"><b>Zusatzinfos</b>${extraText}</div>
         </div>
       </div>`;
-    setTimeout(()=>$('#addCart').onclick=()=>{state.cart++;updateCart();showToast('KlimaSkin EC‑2 wurde zum Demo-Warenkorb hinzugefügt.');},0);
+    setTimeout(()=>$('#addCart').onclick=()=>{state.cart++;updateCart();showToast('KlimaSkin EC‑2 wurde hinzugefügt. Warenkorb oben öffnen.');},0);
   }else if(state.compatibility==='warn'){
     box.innerHTML=`
       <div class="result-card status-warn">
@@ -714,10 +771,113 @@ function renderResult(){
 }
 renderResult();
 
+const UNIT_PRICE=399;
 function updateCart(){ $('#cartCount').textContent=state.cart; }
-$('#cartBtn').onclick=()=>{
-  openModal('Demo-Warenkorb',state.cart?`<p><b>${state.cart} × KlimaSkin EC‑2 Starter Kit</b></p><p>Demo-Summe: <b>${state.cart*399} €</b></p><p class="small">Kein echter Checkout – nur MVP-Demonstration.</p><button class="btn primary" onclick="document.querySelector('#modal').classList.remove('show');showToast('Demo-Checkout abgeschlossen.')">Demo-Checkout</button>`:'<p>Der Demo-Warenkorb ist leer.</p>');
-};
+
+function setWideModal(on=true){
+  const box=$('.modalbox');
+  if(box) box.classList.toggle('checkout-modal',on);
+}
+function closeModal(){
+  $('#modal').classList.remove('show');
+  setWideModal(false);
+}
+
+function openCart(){
+  setWideModal(true);
+  if(state.cart<1){
+    openModal('Warenkorb',`
+      <div style="text-align:center;padding:18px 0">
+        <div style="font-size:42px">🛒</div>
+        <h3>Dein Warenkorb ist noch leer</h3>
+        <p class="muted">Konfiguriere zuerst dein Fenster. Danach kannst du das empfohlene KlimaSkin Kit hier prüfen und als Demo bestellen.</p>
+        <button class="btn primary" id="emptyCartConfig">Fenster konfigurieren</button>
+      </div>`);
+    setTimeout(()=>$('#emptyCartConfig').onclick=()=>{closeModal();$('#config').scrollIntoView({behavior:'smooth'});},0);
+    return;
+  }
+  const total=state.cart*UNIT_PRICE;
+  openModal('Warenkorb',`
+    <div class="cart-line">
+      <div class="cart-product">
+        <div class="cart-thumb">🪟</div>
+        <div><b>KlimaSkin EC‑2 Starter Kit</b><div class="small">Smart Film · Window Node · KlimaHub · Konfiguration</div><div class="small">Zielpreis im 2035-MVP</div></div>
+      </div>
+      <div>
+        <div class="qty-control"><button class="qty-btn" id="cartMinus">−</button><b>${state.cart}</b><button class="qty-btn" id="cartPlus">+</button></div>
+        <div style="margin-top:8px;text-align:right"><b>${total} €</b></div>
+        <button class="btn secondary" id="cartRemove" style="padding:7px 10px;margin-top:8px">Entfernen</button>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <div class="summary-row"><span>Zwischensumme</span><b>${total} €</b></div>
+      <div class="summary-row"><span>Versand</span><b>0 €</b></div>
+      <div class="summary-row"><span>Demo-Installation</span><span>Selbstinstallation</span></div>
+      <div class="summary-row total"><span>Gesamt</span><span>${total} €</span></div>
+    </div>
+    <div class="demo-note"><b>MVP-Hinweis:</b> Dies ist ein simulierter Warenkorb. Es wird kein echter Kauf ausgelöst.</div>
+    <div class="navrow"><button class="btn secondary" id="cartContinue">Weiter konfigurieren</button><button class="btn primary" id="checkoutStart">Zur Bestellung →</button></div>`);
+  setTimeout(()=>{
+    $('#cartMinus').onclick=()=>{state.cart=Math.max(0,state.cart-1);updateCart();openCart();};
+    $('#cartPlus').onclick=()=>{state.cart++;updateCart();openCart();};
+    $('#cartRemove').onclick=()=>{state.cart=0;updateCart();openCart();};
+    $('#cartContinue').onclick=()=>{closeModal();$('#config').scrollIntoView({behavior:'smooth'});};
+    $('#checkoutStart').onclick=openCheckout;
+  },0);
+}
+
+function openCheckout(){
+  if(state.cart<1){openCart();return;}
+  setWideModal(true);
+  const total=state.cart*UNIT_PRICE;
+  openModal('Bestellung abschließen',`
+    <p class="muted">Fülle die Daten aus und wähle eine Zahlungsart. Alles bleibt Teil der Demo – es werden keine Daten übertragen.</p>
+    <div class="checkout-grid">
+      <div class="field"><label>Vorname</label><input id="coFirst" autocomplete="given-name" placeholder="Vorname"></div>
+      <div class="field"><label>Nachname</label><input id="coLast" autocomplete="family-name" placeholder="Nachname"></div>
+      <div class="field full"><label>E-Mail</label><input id="coEmail" type="email" autocomplete="email" placeholder="name@example.com"></div>
+      <div class="field full"><label>Straße & Hausnummer</label><input id="coStreet" autocomplete="street-address" placeholder="Beispielstraße 12"></div>
+      <div class="field"><label>PLZ</label><input id="coZip" inputmode="numeric" placeholder="3500"></div>
+      <div class="field"><label>Ort</label><input id="coCity" placeholder="Krems"></div>
+    </div>
+    <div class="group-title">Zahlungsart</div>
+    <div class="payment-options">
+      <label class="payment-option"><input type="radio" name="pay" value="Kreditkarte" checked><span><b>Kreditkarte</b><br><span class="small">Demo-Auswahl</span></span></label>
+      <label class="payment-option"><input type="radio" name="pay" value="PayPal"><span><b>PayPal</b><br><span class="small">Demo-Auswahl</span></span></label>
+      <label class="payment-option"><input type="radio" name="pay" value="Rechnung"><span><b>Rechnung</b><br><span class="small">Demo-Auswahl</span></span></label>
+    </div>
+    <div class="cart-summary">
+      <div class="summary-row"><span>${state.cart} × KlimaSkin EC‑2</span><b>${total} €</b></div>
+      <div class="summary-row total"><span>Gesamt</span><span>${total} €</span></div>
+    </div>
+    <div class="demo-note"><b>Keine echte Zahlung:</b> Die Zahlungsart dient nur zur Demonstration eines vollständigen Customer Journeys.</div>
+    <div id="checkoutError" class="small" style="color:#bb4e4e;margin-top:10px"></div>
+    <div class="navrow"><button class="btn secondary" id="backToCart">← Warenkorb</button><button class="btn primary" id="placeOrder">Demo-Bestellung abschließen</button></div>`);
+  setTimeout(()=>{
+    $('#backToCart').onclick=openCart;
+    $('#placeOrder').onclick=()=>{
+      const fields=['coFirst','coLast','coEmail','coStreet','coZip','coCity'];
+      const missing=fields.some(id=>!$('#'+id).value.trim());
+      const email=$('#coEmail').value.trim();
+      if(missing){$('#checkoutError').textContent='Bitte alle Pflichtfelder ausfüllen.';return;}
+      if(!/^\S+@\S+\.\S+$/.test(email)){$('#checkoutError').textContent='Bitte eine gültige E-Mail-Adresse eingeben.';return;}
+      const pay=document.querySelector('input[name="pay"]:checked').value;
+      const orderNo='KS-DEMO-'+String(Date.now()).slice(-6);
+      state.cart=0;updateCart();
+      openModal('Bestellung bestätigt',`
+        <div class="order-success">
+          <div class="success-icon">✓</div>
+          <h3>Demo-Bestellung erfolgreich</h3>
+          <p>Bestellnummer: <b>${orderNo}</b></p>
+          <p class="muted">Zahlungsart: ${pay} · Keine echte Zahlung wurde durchgeführt.</p>
+          <p class="muted">Im echten Produkt würde der Kunde jetzt eine Bestätigung und die nächsten Schritte zur Lieferung erhalten.</p>
+          <button class="btn primary" id="orderDone">Zurück zum Produkt</button>
+        </div>`);
+      setTimeout(()=>$('#orderDone').onclick=()=>{closeModal();$('#home').scrollIntoView({behavior:'smooth'});},0);
+    };
+  },0);
+}
+$('#cartBtn').onclick=openCart;
 
 function openExpert(){
   openModal('Expertenprüfung anfordern',`
@@ -730,8 +890,8 @@ function openExpert(){
 }
 
 function openModal(title,body){$('#modalTitle').textContent=title;$('#modalBody').innerHTML=body;$('#modal').classList.add('show')}
-$('#closeModal').onclick=()=>$('#modal').classList.remove('show');
-$('#modal').addEventListener('click',e=>{if(e.target===$('#modal'))$('#modal').classList.remove('show')});
+$('#closeModal').onclick=closeModal;
+$('#modal').addEventListener('click',e=>{if(e.target===$('#modal'))closeModal();});
 
 const openSafety=()=>openModal('KlimaSkin 2.0 · Safety',`
   <ol>
@@ -890,7 +1050,68 @@ installCards.forEach(card=>card.addEventListener('click',()=>{
   renderInstall(card.dataset.install);
 }));
 
-$$('.room').forEach(r=>r.onclick=()=>openModal(r.dataset.room,`<p>Dieser Raum ist Teil des Demo-Dashboards.</p><p><b>Status:</b> ${r.querySelector('.room-status').textContent}</p><p class="small">In einer späteren Produktversion könnten hier Verlaufsdaten, Temperatur und manuelle Einstellungen angezeigt werden.</p>`));
+function openRoomControl(r){
+  setWideModal(false);
+  const current=r.querySelector('.room-status').textContent;
+  openModal(r.dataset.room,`
+    <p class="muted">Live-Demo des Fensterstatus. Du kannst testweise einen Modus wählen; die Anzeige im Dashboard wird direkt aktualisiert.</p>
+    <div class="room-detail-metrics">
+      <div class="metric">Raumtemperatur<b>${r.dataset.temp}°C</b></div>
+      <div class="metric">Glastemperatur<b>${r.dataset.glass}°C</b></div>
+      <div class="metric">Sonneneinstrahlung<b>${r.dataset.sun}%</b></div>
+    </div>
+    <div class="group-title">Fenstermodus</div>
+    <div class="room-control-grid">
+      ${['Clear Mode','Heat Protection','Maximum Protection','Auto'].map(m=>`<button type="button" class="room-mode-btn ${m===current?'active':''}" data-mode="${m}">${m}</button>`).join('')}
+    </div>
+    <div class="demo-note"><b>Demo:</b> Im realen System würde der Auto-Modus anhand der Sensorwerte entscheiden. Manuelle Modi dienen hier nur zur Interaktion.</div>
+    <div class="navrow"><button class="btn secondary" id="roomSimulator">Im Simulator testen</button><button class="btn primary" id="roomClose">Fertig</button></div>`);
+  setTimeout(()=>{
+    $$('.room-mode-btn').forEach(btn=>btn.onclick=()=>{
+      $$('.room-mode-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+      const mode=btn.dataset.mode;
+      r.querySelector('.room-status').textContent=mode==='Auto'?'Auto Mode':mode;
+      r.dataset.mode=mode;
+      showToast(`${r.dataset.room}: ${mode} ausgewählt.`);
+    });
+    $('#roomSimulator').onclick=()=>{closeModal();$('#simulator').scrollIntoView({behavior:'smooth'});};
+    $('#roomClose').onclick=closeModal;
+  },0);
+}
+$$('.room').forEach(r=>r.onclick=()=>openRoomControl(r));
+
+$$('.kpi-btn').forEach(k=>k.onclick=()=>{
+  const content={
+    temperature:['Ø Raumtemperatur','24.1°C ist der Demo-Durchschnitt der drei angezeigten Räume. Öffne einen Raum, um dessen Einzelwerte zu sehen.'],
+    humidity:['Luftfeuchtigkeit','52% liegt im Demo-Komfortbereich. Der KlimaHub kann Raumklima-Kontext ergänzen, während der Window Node direkt am Fenster arbeitet.'],
+    status:['Systemstatus','Alle drei Demo-Fenster sind aktiv. Zwei davon verwenden aktuell einen stärkeren Hitzeschutz.']
+  }[k.dataset.kpi];
+  openModal(content[0],`<p>${content[1]}</p><button class="btn primary" id="kpiOk">Verstanden</button>`);
+  setTimeout(()=>$('#kpiOk').onclick=closeModal,0);
+});
+
+if($('#dashSimulator')) $('#dashSimulator').onclick=()=>$('#simulator').scrollIntoView({behavior:'smooth'});
+if($('#dashAddWindow')) $('#dashAddWindow').onclick=()=>$('#config').scrollIntoView({behavior:'smooth'});
+if($('#dashSystemCheck')) $('#dashSystemCheck').onclick=()=>openModal('Systemstatus',`
+  <div class="statusline">✓ Alle Demo-Komponenten erreichbar</div>
+  <ul><li>3 Window Nodes aktiv</li><li>KlimaHub verbunden</li><li>Sensorwerte plausibel</li><li>Keine Safety-Warnung</li></ul>
+  <p class="small">Simulierter Systemcheck für das MVP.</p>`);
+
+const heroInfo={
+  heat:{title:'Weniger Wärmeeintrag',body:'Bei hoher Sonneneinstrahlung und steigender Glastemperatur kann KlimaSkin in einen stärkeren Schutzmodus wechseln. Im Simulator kannst du dieses Verhalten selbst testen.',target:'#simulator',cta:'Im Simulator testen'},
+  light:{title:'Tageslicht bleibt',body:'KlimaSkin arbeitet mit mehreren Schutzstufen statt einer permanenten Verdunkelung. So bleibt der Raum im Clear Mode möglichst hell.',target:'#how',cta:'Modi ansehen'},
+  retrofit:{title:'Retrofit statt Umbau',body:'Das bestehende Fenster bleibt erhalten. Smart Film, Window Node und Connector werden als Nachrüstlösung ergänzt.',target:'#installation',cta:'Installation ansehen'},
+  existing:{title:'Für bestehende Fenster',body:'Im Konfigurator werden Fenstertyp, Maße und mögliche Risikofaktoren abgefragt, bevor eine Empfehlung entsteht.',target:'#config',cta:'Kompatibilität prüfen'},
+  sun:{title:'Sonne erkannt',body:'Sonneneinstrahlung gehört zu den Signalen, die für die Entscheidung des Schutzmodus relevant sind. Zusätzlich berücksichtigt das MVP Glas- und Raumtemperatur.',target:'#simulator',cta:'Messwerte verändern'},
+  film:{title:'Smart Film bereit',body:'Der Smart Film ist die veränderliche Schicht am Fenster. Der Window Node steuert, welcher Schutzmodus aktiv sein soll.',target:'#product',cta:'Komponenten ansehen'},
+  automatic:{title:'Automatische Anpassung',body:'Der Window Node verarbeitet Messwerte direkt am Fenster und entscheidet im MVP, ob Clear, Heat Protection oder Maximum Protection sinnvoll ist.',target:'#simulator',cta:'Automatik testen'},
+  comfort:{title:'Komfortorientiert',body:'Ziel ist nicht maximale Verdunkelung, sondern ein sinnvoller Kompromiss zwischen Hitzeschutz und nutzbarem Tageslicht.',target:'#simulator',cta:'Schutzmodi vergleichen'}
+};
+$$('.hero-action').forEach(el=>el.onclick=()=>{
+  const info=heroInfo[el.dataset.hero]; if(!info)return;
+  openModal(info.title,`<p>${info.body}</p><button class="btn primary" id="heroModalCta">${info.cta}</button>`);
+  setTimeout(()=>$('#heroModalCta').onclick=()=>{closeModal();$(info.target).scrollIntoView({behavior:'smooth'});},0);
+});
 
 $('#resetBtn').onclick=()=>{localStorage.clear();location.reload()};
 function showToast(t){const x=$('#toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
